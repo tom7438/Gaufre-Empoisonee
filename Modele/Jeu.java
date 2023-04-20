@@ -14,13 +14,15 @@ public class Jeu {
 		Niveau n = new Niveau(l, c);
 		joueurCourant = 0;
 		// Affiche du plateau initial
-		System.out.println("Plateau initial :\n" + n.toString());
 		// Boucle de jeu
 		while(!n.estTermine()) {
+			System.out.println("Plateau :\n" + n.toString());
 			Coup p = new Coup(n);
-			n.jouer(p.caseChoisieL, p.caseChoisieC);
-			// Affiche du plateau après le premier coup
-			System.out.println("Plateau après le premier coup :\n" + n.toString());
+			if (n.jouer(p.caseChoisieL, p.caseChoisieC) == 1)
+				break;
+			else {
+				joueurCourant = (joueurCourant + 1) % 2;
+			}
 		}
 		//metAJour();
 	}

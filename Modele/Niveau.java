@@ -110,6 +110,10 @@ public class Niveau {
         return contenu[ligne][colonne] == MORCEAU;
     }
 
+    public boolean aMorceauEmpoisonne(int ligne, int colonne) {
+        return (ligne == 0 && colonne == 0);
+    }
+
     public boolean estTermine() {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
@@ -136,13 +140,19 @@ public class Niveau {
         return s;
     }
 
-    public boolean jouer(int caseChoisieL, int caseChoisieC) {
+    public int jouer(int caseChoisieL, int caseChoisieC) {
         if(this.aMorceau(caseChoisieL, caseChoisieC)) {
             this.effacerRectangle(caseChoisieL, caseChoisieC);
-            return true;
+            return 0;
+        } else if(this.aMorceauEmpoisonne(caseChoisieL, caseChoisieC)) {
+            System.out.println("Vous avez mangé un morceau empoisonné");
+            System.out.println("Vous avez perdu");
+            System.out.println("Fin du jeu");
+            System.out.println("Merci d'avoir joué connard");
+            return 1;
         } else {
             System.out.println("Il n'y a pas de morceau à cette case");
-            return false;
+            return 2;
         }
     }
 }
