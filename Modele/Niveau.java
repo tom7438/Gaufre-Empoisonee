@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Niveau {
+    public static final int VIDE = 0;
+    public static final int MORCEAU = 1;
+    public static final int MORCEAU_EMPOSONNE = -1;
     public int lignes;
     public int colonnes;
-    public List<Integer> contenu;
+    public int[][] contenu;
 
     public Niveau(int lignes, int colonnes) {
         if(lignes < 1 || colonnes < 1) {
@@ -15,10 +18,19 @@ public class Niveau {
         this.lignes = lignes;
         this.colonnes = colonnes;
 
-        contenu = new ArrayList<Integer>(lignes);
+        initContenu();
 
-        for(int i = 0; i < lignes; i++) {
-            contenu.add(colonnes);
+    }
+
+    void initContenu() {
+        contenu = new int[lignes][colonnes];
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < colonnes; j++) {
+                if(i == 0 && j == 0)
+                    contenu[i][j] = MORCEAU_EMPOSONNE;
+                else
+                    contenu[i][j] = MORCEAU;
+            }
         }
     }
 
@@ -28,20 +40,27 @@ public class Niveau {
         this.contenu = n.getContenu();
     }
 
-    public List<Integer> getContenu() {
+    public int[][] getContenu() {
         return this.contenu;
     }
 
-    public int getLignes() {
+    public int getLigne() {
         return this.lignes;
     }
 
-    public int getColonnes() {
+    public int getColonne() {
         return this.colonnes;
     }
 
     void ajouterLigne() {
-        this.lignes++;
-        this.contenu.add(colonnes);
+        // TODO: implement here
+    }
+
+    void aMorceau(int ligne, int colonne) {
+        if(ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
+            throw new IllegalArgumentException("Les coordonnées sont invalides");
+        }
+
+        return contenu[ligne][colonne] == MORCEAU;
     }
 }
