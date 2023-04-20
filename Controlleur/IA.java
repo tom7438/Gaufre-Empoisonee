@@ -7,11 +7,11 @@ import Modele.Jeu;
 class IA extends Joueur {
 	Random r;
 
-	IA(int n, Jeu p) {
+	public IA(int n, Jeu p) {
 		super(n, p);
 		r = new Random();
 	}
-
+/*
 	@Override
 	boolean tempsEcoule() {
 		// Pour cette IA, on selectionne aléatoirement une case libre
@@ -24,6 +24,8 @@ class IA extends Joueur {
         }while((i==0 && j == 0) || !plateau.libre(i, j));
         
 		plateau.jouer(i, j);
+
 		return true;
 	}
+ */
 }

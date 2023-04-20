@@ -1,6 +1,5 @@
 package Modele;
 
-
 public class Niveau {
     public static final int VIDE = 0;
     public static final int MORCEAU = 1;
@@ -119,5 +118,16 @@ public class Niveau {
             }
         }
         return true;
+    }
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < colonnes; j++) {
+                s += contenu[i][j] + " ";
+            }
+            s += "\n";
+        }
+        return s;
     }
 }

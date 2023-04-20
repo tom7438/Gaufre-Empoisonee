@@ -9,7 +9,7 @@ import Vues.CollecteurEvenements;
 
 public class Gaufre {
     public static void main(String[] args) throws Exception {
-        Jeu j = new Jeu(3);
+        Jeu j = new Jeu(3, 3);
         CollecteurEvenements control = new ControleurMediateur(j);
         //InterfaceMenu.demarrer(J,control);
     }

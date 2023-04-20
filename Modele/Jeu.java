@@ -5,18 +5,17 @@ public class Jeu {
 	int[][] plateau;
 	int joueurCourant;
 
-	public Jeu(int n) {
-		reset(n);
+	public Jeu(int l, int c) {
+		reset(l, c);
 	}
 
-	public void reset(int n) {
-		plateau = new int[n][n];
+	public void reset(int l, int c) {
+		plateau = new int[l][c];
 		enCours = true;
-		for (int i = 0; i < plateau.length; i++)
-			for (int j = 0; j < plateau[0].length; j++)
-				plateau[i][j] = 1;
-        plateau[0][0] = -1;// definis la case empoisonée
+		Niveau n = new Niveau(l, c);
 		joueurCourant = 0;
+		// Affiche du plateau initial
+		System.out.println("Plateau initial :\n" + n.toString());
 		//metAJour();
 	}
 
