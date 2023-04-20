@@ -22,7 +22,7 @@ public class Jeu {
 		for (int i = 0; i < plateau.length; i++)
 			for (int j = 0; j < plateau[0].length; j++)
 				plateau[i][j] = 1;
-        //plateau[0][0] = 2;// definis la case empoisonée
+        plateau[0][0] = -1;// definis la case empoisonée
 		joueurCourant = 0;
 		//metAJour();
 	}
