@@ -57,8 +57,8 @@ public class Niveau {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
                 // Nouvelle ligne
-                if (i == ligne)
-                    newContenu[i][colonne] = MORCEAU;
+                if (i == lignes)
+                    newContenu[i][colonnes] = MORCEAU;
                 else
                     newContenu[i][j] = contenu[i][j];
             }
@@ -72,8 +72,8 @@ public class Niveau {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
                 // Nouvelle colonne
-                if (j == colonne)
-                    newContenu[i][colonne] = MORCEAU;
+                if (j == colonnes)
+                    newContenu[i][colonnes] = MORCEAU;
                 else
                     newContenu[i][j] = contenu[i][j];
             }
@@ -93,7 +93,7 @@ public class Niveau {
         }
     }
 
-    public boolean effacerRectangle(int caseL, caseC) {
+    public boolean effacerRectangle(int caseL, int caseC) {
         if (caseL < 0 || caseL >= lignes || caseC < 0 || caseC >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
         }
