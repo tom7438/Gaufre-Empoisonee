@@ -1,4 +1,4 @@
-package Modele
+package Modele;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Niveau {
 
     public Niveau(int lignes, int colonnes) {
         if (lignes < 1 || colonnes < 1) {
-            throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0"
+            throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0");
         }
         this.lignes = lignes;
         this.colonnes = colonnes;
