@@ -12,32 +12,31 @@ public class Niveau {
     public int[][] contenu;
 
     public Niveau(int lignes, int colonnes) {
-        if(lignes < 1 || colonnes < 1) {
+        if (lignes < 1 || colonnes < 1) {
             throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0"
         }
         this.lignes = lignes;
         this.colonnes = colonnes;
 
         initContenu();
-
-    }
-
-    void initContenu() {
-        contenu = new int[lignes][colonnes];
-        for (int i = 0; i < lignes; i++) {
-            for (int j = 0; j < colonnes; j++) {
-                if(i == 0 && j == 0)
-                    contenu[i][j] = MORCEAU_EMPOISONNE;
-                else
-                    contenu[i][j] = MORCEAU;
-            }
-        }
     }
 
     public Niveau(Niveau n) {
         this.lignes = n.lignes;
         this.colonnes = n.colonnes;
         this.contenu = n.getContenu();
+    }
+
+    public void initContenu() {
+        contenu = new int[lignes][colonnes];
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < colonnes; j++) {
+                if (i == 0 && j == 0)
+                    contenu[i][j] = MORCEAU_EMPOISONNE;
+                else
+                    contenu[i][j] = MORCEAU;
+            }
+        }
     }
 
     public int[][] getContenu() {
@@ -52,15 +51,75 @@ public class Niveau {
         return this.colonnes;
     }
 
-    void ajouterLigne() {
-        // TODO: implement here
+    public void ajouterLigne() {
+        // Ajouter une ligne au niveau
+        int[][] newContenu = new int[lignes + 1][colonnes];
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < colonnes; j++) {
+                // Nouvelle ligne
+                if (i == ligne)
+                    newContenu[i][colonne] = MORCEAU
+                else
+                    newContenu[i][j] = contenu[i][j];
+            }
+        }
+        contenu = newContenu;
     }
 
-    void aMorceau(int ligne, int colonne) {
-        if(ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
+    public void ajouterColonne() {
+        // Ajouter une colonne au niveau
+        int[][] newContenu = new int[lignes][colonnes + 1];
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < colonnes; j++) {
+                // Nouvelle colonne
+                if (j == colonne)
+                    newContenu[i][colonne] = MORCEAU
+                else
+                    newContenu[i][j] = contenu[i][j];
+            }
+        }
+        contenu = newContenu;
+    }
+
+    public void modifierTailleGaufre(int ligne, int colonne) {
+        if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
+            throw new IllegalArgumentException("Nouvelle taille de gaufre non valide");
+        }
+        for(int i=this.lignes; i<ligne; i++) {
+            ajouterLigne();
+        }
+        for(int i=this.colonnes; i<colonne; i++) {
+            ajouterColonne();
+        }
+    }
+
+    public boolean effacerRectangle(int caseL, caseC) {
+        if (caseL < 0 || caseL >= lignes || caseC < 0 || caseC >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
         }
+        // Effacer le rectangle de sommet supérieur gauche (caseL, caseC)
+        for (int i = caseL; i < lignes; i++) {
+            for (int j = caseC; j < colonnes; j++) {
+                contenu[i][j] = VIDE;
+            }
+        }
+        return true;
+    }
 
+    public void aMorceau(int ligne, int colonne) {
+        if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
+            throw new IllegalArgumentException("Les coordonnées sont invalides");
+        }
         return contenu[ligne][colonne] == MORCEAU;
+    }
+
+    public void estTermine() {
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < colonnes; j++) {
+                if (contenu[i][j] == MORCEAU)
+                    return false;
+            }
+        }
+        return true;
     }
 }
