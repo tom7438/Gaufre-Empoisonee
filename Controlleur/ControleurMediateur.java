@@ -1,10 +1,9 @@
 package Controlleur;
 
-
 import Modele.Jeu;
-//import Vue.CollecteurEvenements;
+import Vues.CollecteurEvenements;
 
-public class ControleurMediateur {
+public class ControleurMediateur implements CollecteurEvenements {
 	Jeu jeu;
 	//Joueur[][] joueurs;
 	int [] typeJoueur;

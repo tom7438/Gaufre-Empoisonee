@@ -1,10 +1,16 @@
 import Modele.Jeu;
+import Controlleur.ControleurMediateur;
+
+import Vues.CollecteurEvenements;
+
+
 
 //import Vue.InterfaceMenu;
 
 public class Gaufre {
     public static void main(String[] args) throws Exception {
         Jeu J = new Jeu(3);
+        Jeu j = new Jeu(3);
         CollecteurEvenements control = new ControleurMediateur(j);
         //InterfaceMenu.demarrer(J);
     }
