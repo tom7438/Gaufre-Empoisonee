@@ -73,7 +73,7 @@ public class Niveau {
             for (int j = 0; j < colonnes; j++) {
                 // Nouvelle colonne
                 if (j == colonne)
-                    newContenu[i][colonne] = MORCEAU
+                    newContenu[i][colonne] = MORCEAU;
                 else
                     newContenu[i][j] = contenu[i][j];
             }
