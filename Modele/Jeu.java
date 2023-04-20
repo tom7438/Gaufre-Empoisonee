@@ -1,3 +1,10 @@
+package Modele
+
+public class Jeu {
+    public Jeu() {
+        System.out.println("Jeu");
+    }
+}
 package Modele;
 
 public class Jeu {
