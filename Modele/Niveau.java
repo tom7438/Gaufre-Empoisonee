@@ -124,7 +124,12 @@ public class Niveau {
         String s = "";
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
-                s += contenu[i][j] + " ";
+                if(contenu[i][j] == MORCEAU_EMPOISONNE)
+                    s += "X ";
+                else if(contenu[i][j] == MORCEAU)
+                    s += "O ";
+                else if(contenu[i][j] == VIDE)
+                    s += "  ";
             }
             s += "\n";
         }
