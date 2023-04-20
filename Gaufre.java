@@ -12,6 +12,6 @@ public class Gaufre {
         Jeu J = new Jeu(3);
         Jeu j = new Jeu(3);
         CollecteurEvenements control = new ControleurMediateur(j);
-        //InterfaceMenu.demarrer(J);
+        //InterfaceMenu.demarrer(J,control);
     }
 }
