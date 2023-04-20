@@ -1,4 +1,4 @@
-package Modele
+package Modele;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Niveau {
 
     public Niveau(int lignes, int colonnes) {
         if (lignes < 1 || colonnes < 1) {
-            throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0"
+            throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0");
         }
         this.lignes = lignes;
         this.colonnes = colonnes;
@@ -106,14 +106,14 @@ public class Niveau {
         return true;
     }
 
-    public void aMorceau(int ligne, int colonne) {
+    public boolean aMorceau(int ligne, int colonne) {
         if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
         }
         return contenu[ligne][colonne] == MORCEAU;
     }
 
-    public void estTermine() {
+    public boolean estTermine() {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
                 if (contenu[i][j] == MORCEAU)
