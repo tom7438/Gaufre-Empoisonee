@@ -6,7 +6,7 @@ import java.util.List;
 public class Niveau {
     public static final int VIDE = 0;
     public static final int MORCEAU = 1;
-    public static final int MORCEAU_EMPOSONNE = -1;
+    public static final int MORCEAU_EMPOISONNE = -1;
     public int lignes;
     public int colonnes;
     public int[][] contenu;
@@ -27,7 +27,7 @@ public class Niveau {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
                 if(i == 0 && j == 0)
-                    contenu[i][j] = MORCEAU_EMPOSONNE;
+                    contenu[i][j] = MORCEAU_EMPOISONNE;
                 else
                     contenu[i][j] = MORCEAU;
             }
