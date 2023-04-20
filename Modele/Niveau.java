@@ -106,14 +106,14 @@ public class Niveau {
         return true;
     }
 
-    public void aMorceau(int ligne, int colonne) {
+    public boolean aMorceau(int ligne, int colonne) {
         if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
         }
         return contenu[ligne][colonne] == MORCEAU;
     }
 
-    public void estTermine() {
+    public boolean estTermine() {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
                 if (contenu[i][j] == MORCEAU)
