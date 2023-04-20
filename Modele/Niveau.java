@@ -1,7 +1,5 @@
 package Modele;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Niveau {
     public static final int VIDE = 0;
