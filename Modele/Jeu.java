@@ -2,7 +2,7 @@ package Modele;
 
 public class Jeu {
 	boolean enCours;
-	int[][] plateau;
+	Niveau niveau;
 	int joueurCourant;
 
 	public Jeu(int l, int c) {
@@ -10,28 +10,23 @@ public class Jeu {
 	}
 
 	public void reset(int l, int c) {
-		plateau = new int[l][c];
 		enCours = true;
 		Niveau n = new Niveau(l, c);
 		joueurCourant = 0;
 		// Affiche du plateau initial
 		System.out.println("Plateau initial :\n" + n.toString());
+		// Boucle de jeu
+		while(!n.estTermine()) {
+			Coup p = new Coup(n);
+			n.jouer(p.caseChoisieL, p.caseChoisieC);
+			// Affiche du plateau après le premier coup
+			System.out.println("Plateau après le premier coup :\n" + n.toString());
+		}
 		//metAJour();
-	}
-
-    public int valeur(int i, int j) {
-		return plateau[i][j];
 	}
 
 	public boolean enCours() {
 		return enCours;
 	}
 
-	public int largeur() {
-		return plateau[0].length;
-	}
-
-	public int hauteur() {
-		return plateau.length;
-	}
 }

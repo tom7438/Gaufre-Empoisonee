@@ -135,4 +135,14 @@ public class Niveau {
         }
         return s;
     }
+
+    public boolean jouer(int caseChoisieL, int caseChoisieC) {
+        if(this.aMorceau(caseChoisieL, caseChoisieC)) {
+            this.effacerRectangle(caseChoisieL, caseChoisieC);
+            return true;
+        } else {
+            System.out.println("Il n'y a pas de morceau à cette case");
+            return false;
+        }
+    }
 }
