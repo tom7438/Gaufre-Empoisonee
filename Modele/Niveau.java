@@ -103,6 +103,8 @@ public class Niveau {
         return true;
     }
 
+
+
     public boolean aMorceau(int ligne, int colonne) {
         if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
@@ -140,6 +142,18 @@ public class Niveau {
         return s;
     }
 
+    // On clone le niveau pour ne pas modifier le niveau actuel
+    public Niveau clone() {
+        Niveau n = new Niveau(this.lignes, this.colonnes);
+   
+        for(int i=0; i<n.lignes; i++) {
+            for(int j=0; j<n.colonnes; j++) {
+                n.contenu[i][j] = this.contenu[i][j];
+            }
+        }
+        return n;
+    }
+
     public int jouer(int caseChoisieL, int caseChoisieC) {
         if(this.aMorceau(caseChoisieL, caseChoisieC)) {
             this.effacerRectangle(caseChoisieL, caseChoisieC);
@@ -155,4 +169,6 @@ public class Niveau {
             return 2;
         }
     }
+
+
 }

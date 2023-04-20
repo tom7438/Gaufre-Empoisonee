@@ -16,5 +16,7 @@ public class Coup {
             this.caseChoisieL = Scanner.nextInt();
             this.caseChoisieC = Scanner.nextInt();
         } while(this.caseChoisieL < 0 || this.caseChoisieL >= n.getLigne() || this.caseChoisieC < 0 || this.caseChoisieC >= n.getColonne());
+
     }
+
 }
