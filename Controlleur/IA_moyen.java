@@ -4,11 +4,10 @@ import java.util.Random;
 import Modele.Niveau;
 
 
-//ICI j'ai copié l'IA moyenne, TODO : savoir comment changer de niveau d'IA
-class IA extends Joueur {
+class IA_moyen extends Joueur {
 	Random r;
 
-	public IA(int num, Niveau n) {
+	public IA_moyen(int num, Niveau n) {
 		super(num, n);
 		r = new Random();
 	}
@@ -30,7 +29,6 @@ class IA extends Joueur {
 		}while (niveau.aMorceau(i+1,0) || niveau.aMorceau(0, i+1)); //si l'IA mange l'empoisonné alors 
 	
 		System.out.println("L'IA a joué le coup : (" + i + "," + j + ")");
-		System.out.println("ICIIIII " + i + "," + j);
 
 		if (ok == 0){
             return true;
