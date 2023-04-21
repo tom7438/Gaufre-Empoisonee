@@ -1,13 +1,18 @@
 package Modele;
 
+import Controlleur.*;
+
 public class Jeu {
 	boolean enCours;
+	boolean partieTerminee;
 	public Niveau niveau;
-	int joueurCourant;
 
-	public Jeu(int l, int c) {
-		reset(l, c);
-	}
+	// Partie joueurs
+	public Joueur[] joueurs;
+	int [] typeJoueur;
+	public int joueurCourant;
+	final int lenteurAttente = 50;
+	int decompte;
 
 	public void reset(int l, int c) {
 		enCours = true;
@@ -15,8 +20,87 @@ public class Jeu {
 		joueurCourant = 0;
 	}
 
+	/**
+	 * Crée une nouvelle partie de taille par défaut
+	 */
+	public void nouvellePartie() {
+		nouvellePartie(Niveau.LIGNES_PAR_DEFAUT, Niveau.COLONNES_PAR_DEFAUT, new Joueur("Player 1", false, 0, niveau), new Joueur("Player 2", false, 0, niveau));
+	}
+
+	public void nouvellePartie(int l, int c, Joueur Joueur1, Joueur Joueur2) {
+		reset(l, c);
+		joueurs = new Joueur[2];
+		joueurs[0] = Joueur1;
+		joueurs[1] = Joueur2;
+	}
+
 	public boolean enCours() {
 		return enCours;
+	}
+	public boolean partieTerminee() {
+		return partieTerminee;
+	}
+
+	public boolean coup(int l, int c) {
+		if (niveau == null) {
+			throw new IllegalStateException("Aucun niveau auquel jouer");
+		}
+		enCours = true;
+
+		if (!niveau.aMorceau(l, c)) {
+			return false;
+		}
+		niveau.effacerRectangle(l, c);
+
+		if (niveau.estTermine()) {
+			partieTerminee = true;
+		} else {
+			changeJoueur();
+		}
+		return true;
+	}
+	/**
+	 * Effectue le changement de joueur
+	 */
+	public void changeJoueur() {
+		//joueurCourant = (joueurCourant + 1) % joueurs.length;
+		joueurCourant = (joueurCourant + 1) % 2;
+		decompte = lenteurAttente;
+	}
+
+	public void tictac() {
+		if (this.enCours()) {
+			if (decompte == 0) {
+				int type = typeJoueur[joueurCourant];
+				// Lorsque le temps est écoulé on le transmet au joueur courant.
+				// Si un coup a été joué (IA) on change de joueur.
+				if (joueurs[joueurCourant].tempsEcoule()) {
+					changeJoueur();
+				} else {
+					// Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
+					System.out.println("On vous attend, joueur " + joueurs[joueurCourant].getPlayerName());
+					decompte = lenteurAttente;
+				}
+			} else {
+				decompte--;
+			}
+		}
+	}
+
+	public Joueur getPlayer(int i) {
+		return joueurs[i % 2];
+	}
+
+	/**
+	 * Retourne le joueur qui joue
+	 * @return 0 ou 1
+	 */
+	public int getPlayer() {
+		return joueurCourant;
+	}
+
+	public void joue(){
+		tictac();
 	}
 
 }

@@ -8,6 +8,9 @@ public class Niveau {
     public int colonnes;
     public int[][] contenu;
 
+    final static int LIGNES_PAR_DEFAUT = 8;
+    final static int COLONNES_PAR_DEFAUT = 6;
+
     public Niveau(int lignes, int colonnes) {
         if (lignes < 1 || colonnes < 1) {
             throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0");

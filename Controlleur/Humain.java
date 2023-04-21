@@ -1,17 +1,18 @@
 package Controlleur;
 
+import Modele.Joueur;
 import Modele.Niveau;
 import Modele.Coup;
 
 
-class Humain extends Joueur{
+public class Humain extends Joueur {
 
-    Humain (int num, Niveau n){
-        super(num,n);
+    public Humain(String name, boolean AI, int diff, Niveau n){
+        super(name, AI, diff, n);
     }
 
     @Override
-    boolean jeu(){   
+    public boolean jeu(){
         int ok;
         do{
          Coup p = new Coup(niveau);

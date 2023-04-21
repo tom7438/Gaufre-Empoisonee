@@ -1,24 +1,25 @@
 package Controlleur;
 
 import java.util.Random;
+
+import Modele.Joueur;
 import Modele.Niveau;
 
 
 class IA_moyen extends Joueur {
 	Random r;
 
-	public IA_moyen(int num, Niveau n) {
-		super(num, n);
+	public IA_moyen(String name, boolean AI, int diff, Niveau n) {
+		super(name, AI, diff, n);
 		r = new Random();
 	}
 
-	@Override
-    boolean jeu(){  
+    public boolean jeu(){
 		int i, j;
 		int ok;
 		do{
 			do{
-				i = r.nextInt(niveau.getLigne());
+				i = r.nextInt(this.niveau.getLigne());
 				j = r.nextInt(niveau.getColonne());
 				ok = niveau.jouer(i, j);
 			}while(ok == 2); //pas de morceau sur cette case

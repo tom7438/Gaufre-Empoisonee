@@ -1,19 +1,20 @@
 package Controlleur;
 
 import java.util.Random;
+
+import Modele.Joueur;
 import Modele.Niveau;
 
 
-class IA_facile extends Joueur {
+public class IA_facile extends Joueur {
 	Random r;
 
-	public IA_facile(int num, Niveau n) {
-		super(num, n);
+	public IA_facile(String name, boolean AI, int diff, Niveau n) {
+		super(name, AI, diff, n);
 		r = new Random();
 	}
 
-	@Override
-    boolean jeu(){  
+    public boolean jeu(){
 		int i, j;
 		int ok;
 		do{

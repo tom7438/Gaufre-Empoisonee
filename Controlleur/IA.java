@@ -1,6 +1,8 @@
 package Controlleur;
 
 import java.util.Random;
+
+import Modele.Joueur;
 import Modele.Niveau;
 
 
@@ -8,13 +10,13 @@ import Modele.Niveau;
 class IA extends Joueur {
 	Random r;
 
-	public IA(int num, Niveau n) {
-		super(num, n);
+	public IA(String name, boolean AI, int diff, Niveau n) {
+		super(name, AI, diff, n);
 		r = new Random();
 	}
 
 	@Override
-    boolean jeu(){  
+    public boolean jeu(){
 		int i, j;
 		int ok;
 		do{
