@@ -115,13 +115,13 @@ public class InterfaceJeu extends InterfaceGraphique{
         });
         quitter.setMinimumSize(new Dimension(50, 300));
         quitter.setPreferredSize(new Dimension(50, 30));
-        quitter.setHorizontalAlignment(SwingConstants.CENTER);
-        quitter.setVerticalAlignment(SwingConstants.CENTER);
-        JPanel quitterPanel = new JPanel(new GridLayout(1, 1));
-        quitterPanel.setLayout(new BoxLayout(quitterPanel, BoxLayout.Y_AXIS));
-        quitterPanel.add(Box.createVerticalGlue());
-        quitterPanel.add(quitter, BorderLayout.CENTER);
-        quitterPanel.add(Box.createVerticalGlue());
+        JPanel quitterPanel = new JPanel(new GridLayout(1, 2));
+        quitterPanel.setLayout(new BoxLayout(quitterPanel, BoxLayout.X_AXIS));
+        quitterPanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à gauche des boutons
+        quitterPanel.add(quitter);
+        quitterPanel.add(Box.createRigidArea(new Dimension(50,0))); // Espacement entre les boutons
+        quitterPanel.add(menuPrincipal);
+        quitterPanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à droite des boutons
         controlsPanel.add(quitterPanel);
 
 
