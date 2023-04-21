@@ -1,5 +1,7 @@
 package Modele;
 
+import java.util.logging.Logger;
+
 public class Niveau {
     public static final int VIDE = 0;
     public static final int MORCEAU = 1;
@@ -8,14 +10,19 @@ public class Niveau {
     public int colonnes;
     public int[][] contenu;
 
+    private Logger logger;
+
     public Niveau(int lignes, int colonnes) {
+        this.logger = MyLogger.getLogger();
         if (lignes < 1 || colonnes < 1) {
+            logger.severe("Le nombre de lignes et de colonnes doit être supérieur à 0");
             throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0");
         }
         this.lignes = lignes;
         this.colonnes = colonnes;
 
         initContenu();
+        logger.info("nouvelle partie de taille " + lignes + " par " + colonnes);
     }
 
     public Niveau(Niveau n) {
@@ -141,10 +148,12 @@ public class Niveau {
     }
 
     public int jouer(int caseChoisieL, int caseChoisieC) {
+        logger.info("coup en " + caseChoisieL + "," + caseChoisieC);
         if(this.aMorceau(caseChoisieL, caseChoisieC)) {
             this.effacerRectangle(caseChoisieL, caseChoisieC);
             return 0;
         } else if(this.aMorceauEmpoisonne(caseChoisieL, caseChoisieC)) {
+            logger.info("Fin de partie");
             System.out.println("Vous avez mangé un morceau empoisonné");
             System.out.println("Vous avez perdu");
             System.out.println("Fin du jeu");

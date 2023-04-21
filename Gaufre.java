@@ -1,9 +1,13 @@
 import Modele.Jeu;
 import Controlleur.ControleurMediateur;
 
+import Modele.MyLogger;
 import Vues.CollecteurEvenements;
 
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 
 //import Vue.InterfaceMenu;
@@ -11,7 +15,12 @@ import java.util.Scanner;
 public class Gaufre {
     public static void main(String[] args) throws Exception {
         boolean rejouer = true;
+
+        // Mise en place du logger
+        Logger logger = MyLogger.getLogger();
+
         while(rejouer) {
+            logger.info("Nouvelle partie");
             // Demander le nombre de lignes et de colonnes
             Scanner Scanner = new Scanner(System.in);
             System.out.println("Entrez le nombre de lignes");
