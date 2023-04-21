@@ -18,7 +18,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 
 		//type 1 = IA;
 		//type 0 = Humain;
-		joueurs[0] = new IA_Difficile(1, j.niveau); 
+		joueurs[0] = new IA_Difficile2(1, j.niveau); 
 		joueurs[1] = new Humain(0, j.niveau); //DEFINIR le type du joueur
 		//joueurs[1] = new IA_moyen(1, j.niveau); 
 
