@@ -17,6 +17,7 @@ public class InterfaceJeu extends InterfaceGraphique{
     private JButton nouvellePartie;
     private JButton menuPrincipal;
     private JButton quitter;
+    private JLabel score;
 
     private JPanel controlsPanel;
     public JLabel currentPlayer;
@@ -55,14 +56,16 @@ public class InterfaceJeu extends InterfaceGraphique{
         gaufrePanel = new JPanel();
         currentPlayer = new JLabel("");
 
-        play = createButton("Jouer");
         charger = createButton("Charger");
         annuler = createButton("<");
         refaire = createButton(">");
         sauvegarder = createButton("Sauvegarder");
-        nouvellePartie = createButton("Nouvelle Partie");
+        nouvellePartie = createButton("Nouvelle\nPartie");
         menuPrincipal = createButton("Menu Principal");
         quitter = createButton("Exit");
+        // TODO : score si plusieurs parties
+        score = new JLabel("Score : ");
+        score.setHorizontalAlignment(JLabel.CENTER);
 
         jPanel3.setLayout(new BorderLayout());
         gaufrePanel.setLayout(new BorderLayout());
@@ -78,10 +81,21 @@ public class InterfaceJeu extends InterfaceGraphique{
         controlsPanel.setPreferredSize(new Dimension(200, 316));
         controlsPanel.setLayout(new GridLayout(4, 1, 0, 20));
 
-        controlsPanel.add(play);
-        controlsPanel.add(annuler);
-        controlsPanel.add(refaire);
-        controlsPanel.add(sauvegarder);
+        controlsPanel.add(score);
+
+        JPanel annulerRefairePanel = new JPanel();
+        annulerRefairePanel.setLayout(new BoxLayout(annulerRefairePanel, BoxLayout.X_AXIS));
+        annulerRefairePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à gauche des boutons
+        annulerRefairePanel.add(annuler);
+        annulerRefairePanel.add(Box.createRigidArea(new Dimension(50,0))); // Espacement entre les boutons
+        annulerRefairePanel.add(refaire);
+        annulerRefairePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à droite des boutons
+        controlsPanel.add(annulerRefairePanel);
+
+        JPanel sauvegarderNouvellePartiePanel = new JPanel(new GridLayout(1, 2));
+        sauvegarderNouvellePartiePanel.add(sauvegarder);
+        sauvegarderNouvellePartiePanel.add(nouvellePartie);
+        controlsPanel.add(sauvegarderNouvellePartiePanel);
 
         quitter.addMouseListener(new MouseInputAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -90,6 +104,9 @@ public class InterfaceJeu extends InterfaceGraphique{
             }
         });
         controlsPanel.add(quitter);
+
+        // Taille minimale du panel de contrôle
+        controlsPanel.setMinimumSize(new Dimension(200, 316));
 
         jPanel3.add(controlsPanel, BorderLayout.EAST);
 
