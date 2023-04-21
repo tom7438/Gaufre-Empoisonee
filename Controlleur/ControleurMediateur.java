@@ -2,6 +2,8 @@ package Controlleur;
 
 import Modele.Jeu;
 import Vues.CollecteurEvenements;
+import java.util.Scanner;
+
 
 public class ControleurMediateur implements CollecteurEvenements {
 	Jeu jeu;
@@ -10,21 +12,54 @@ public class ControleurMediateur implements CollecteurEvenements {
 	int joueurCourant;
 	final int lenteurAttente = 50;
 	int decompte;
+	int niveau_IA = 1; //1 pour facile 2 pour moyen 3 pour difficile
+	int type_joueur =1; //0 pour Humain et 1 pour IA
+
 	public int numero_coup=1;
 
 	public ControleurMediateur(Jeu j) {
 		jeu = j;
 		joueurs = new Joueur[2];
 
+
+		//affiche_type_default();
+		for (int i=0; i<joueurs.length; i++){
+			int type = demande_type(i);
+			if (type == -1){
+				joueurs[i] = new IA_facile(1, j.niveau); //par default;
+
+			}
+			else if(type == 0){
+				joueurs[i] =new Humain(type, j.niveau);
+			}
+			else {
+				niveau_IA = demande_niveau_IA();
+				switch (niveau_IA){
+					case 1:
+						joueurs[i] = new IA_facile(1, j.niveau);
+						break;
+					case 2:
+						joueurs[i] = new IA_moyen(2, j.niveau); 
+						break;
+					case 3:
+						joueurs[i] = new IA_Difficile(3, j.niveau);
+						break;
+
+				}
+			}
+		}
 		//type 1 = IA;
 		//type 0 = Humain;
-		joueurs[0] = new IA_Difficile2(1, j.niveau); 
-		joueurs[1] = new Humain(0, j.niveau); //DEFINIR le type du joueur
+		// joueurs[0] = new IA_Difficile(1, j.niveau); 
+		// joueurs[1] = new Humain(0, j.niveau); //DEFINIR le type du joueur
 		//joueurs[1] = new IA_moyen(1, j.niveau); 
 
-		
 		//System.out.println("Le type " +joueurs[0].type()); 
-		joueurCourant = 0;
+		if(joueur0commence() == 1){
+			joueurCourant = 1;
+		}else{
+			joueurCourant = 0;
+		}
 
 		while(!jeu.niveau.estTermine()){
 			System.out.println("Plateau :\n" + jeu.niveau.toString());
@@ -39,12 +74,58 @@ public class ControleurMediateur implements CollecteurEvenements {
 				break;
 		}
 
+		System.out.println("Plateau :\n" + jeu.niveau.toString());
 		System.out.println("Le joueur " + joueurCourant + " a perdu");
 		//
 
 	}
 
 
+	// private void affiche_type_default(){
+	// 	for (int i =0; i<2; i++){
+	// 		String s ="";
+	// 		if(joueurs[i].type == 0){
+	// 			s += "Type 0 : HUMAIN ";
+	// 		}
+	// 		else{
+	// 			s+="Type 1 : IA";
+	// 		}
+	// 		System.out.println("Le type du joueur " +i+ " est "  +s );
+	// 	}
+	// }
+
+	public int joueur0commence(){
+		Scanner s = new Scanner(System.in);
+		int joueur;
+		do{
+			System.out.println("Indiquez si le joueur 0 commence ou le joueur 1");
+			joueur = s.nextInt();
+		}
+		while(joueur < 0 || joueur > 1);
+		return joueur;
+	}
+
+	public int demande_type(int num_joueur){
+		Scanner s = new Scanner(System.in);
+		int type;
+		do{
+		System.out.println("Entrez le numéro du type du joueur: " + num_joueur +"\n -1 = Par default || 0 = Humain || 1 = IA");
+		type = s.nextInt();
+		}
+		while(type < -1 || type > 1);
+		return type;
+	}
+
+	public int demande_niveau_IA(){
+		Scanner s = new Scanner(System.in);
+		int type;
+		do{
+		System.out.println("Entrez le niveau de l'IA \n 1 = Facile || 2 = Moyen || 3 = Difficile");
+		type = s.nextInt();
+		}
+		while(type < 0 || type > 3);
+		return type;
+	}
 
 	public void joue(){
 		tictac();

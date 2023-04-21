@@ -2,7 +2,6 @@ package Controlleur;
 
 import java.util.Random;
 import Modele.Niveau;
-import Controlleur.ControleurMediateur;
 
 
 class IA_facile extends Joueur {

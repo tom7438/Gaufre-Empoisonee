@@ -44,6 +44,18 @@ public class IA_Difficile2 extends Joueur{
             } else {
                 return false;
             }
+        if (niveau.colonnes == 3 && niveau.lignes == 2){
+            if(niveau.aMorceau(1,2)){
+                ok = niveau.jouer(1,2);
+            } else if(!niveau.aMorceau(0,1)){
+                ok = niveau.jouer(1, 0);
+            } else if(!niveau.aMorceau(1, 0)){
+                ok = niveau.jouer(0, 1);
+            } else if(!niveau.aMorceau(1, 1)){
+                ok = niveau.jouer(0, 2);
+            } else {
+                return false;
+            }
         }else{
             if (niveau.colonnes == 3 && niveau.lignes == 2){
                 if(niveau.aMorceau(0,2)){
@@ -54,18 +66,6 @@ public class IA_Difficile2 extends Joueur{
                     ok = niveau.jouer(0, 1);
                 } else if(!niveau.aMorceau(1, 0)){
                     ok = niveau.jouer(1, 0);
-                } else {
-                    return false;
-                } return true;
-            }if (niveau.lignes == 3 && niveau.colonnes == 2){
-                if(niveau.aMorceau(2,0)){
-                    ok = niveau.jouer(2,0);
-                } else if(!niveau.aMorceau(1,1)){
-                    ok = niveau.jouer(1, 1);
-                } else if(!niveau.aMorceau(1, 0)){
-                    ok = niveau.jouer(1, 0);
-                } else if(!niveau.aMorceau(0, 1)){
-                    ok = niveau.jouer(0, 1);
                 } else {
                     return false;
                 } return true;
