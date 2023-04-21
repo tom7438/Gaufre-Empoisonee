@@ -113,8 +113,8 @@ public class InterfaceJeu extends InterfaceGraphique{
                 fermer();
             }
         });
-        quitter.setMinimumSize(new Dimension(50, 20));
-        quitter.setPreferredSize(new Dimension(50, 20));
+        quitter.setMinimumSize(new Dimension(50, 300));
+        quitter.setPreferredSize(new Dimension(50, 30));
         quitter.setHorizontalAlignment(SwingConstants.CENTER);
         quitter.setVerticalAlignment(SwingConstants.CENTER);
         JPanel quitterPanel = new JPanel(new GridLayout(1, 1));
