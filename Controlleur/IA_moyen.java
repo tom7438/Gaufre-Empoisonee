@@ -24,8 +24,10 @@ class IA_moyen extends Joueur {
 			j = r.nextInt(niveau.getColonne());
 			if (!(i == 0 && j == 0 && (niveau.aMorceau(i+1,0) || niveau.aMorceau(0, i+1)))){//si l'IA mange l'empoisonné alors 
 				ok = niveau.jouer(i, j);
+			} else {
+				ok = 2;
 			}
-			ok = 2;
+			try{Thread.sleep(1);}catch(Exception e){};
 		}while(ok == 2); //pas de morceau sur cette case
 	
 		System.out.println("L'IA a joué le coup : (" + i + "," + j + ")");
