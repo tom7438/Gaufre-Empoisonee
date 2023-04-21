@@ -1,14 +1,17 @@
 package Controlleur;
 
 import java.util.Random;
+
+import javax.sound.sampled.FloatControl.Type;
+
 import Modele.Niveau;
 
 
 class IA_moyen extends Joueur {
 	Random r;
 
-	public IA_moyen(int num, Niveau n) {
-		super(num, n);
+	public IA_moyen(int type, Niveau n) {
+		super(type, n);
 		r = new Random();
 	}
 

@@ -10,6 +10,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 	int joueurCourant;
 	final int lenteurAttente = 50;
 	int decompte;
+	public int numero_coup=1;
 
 	public ControleurMediateur(Jeu j) {
 		jeu = j;
@@ -19,7 +20,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 		joueurs[1] = new IA_facile(1, j.niveau); 
 		//joueurs[1] = new IA_moyen(1, j.niveau); 
 
-
+		//System.out.println("Le type " +joueurs[0].type()); 
 		joueurCourant = 0;
 
 		while(!jeu.niveau.estTermine()){
@@ -27,8 +28,10 @@ public class ControleurMediateur implements CollecteurEvenements {
 			
 
 			System.out.println("C'est au tour du joueur " + joueurCourant);
-			if (joueurs[joueurCourant].jeu())//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
+			if (joueurs[joueurCourant].jeu()){//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
 				changeJoueur();
+				numero_coup += 1;
+			}
 			else
 				break;
 		}

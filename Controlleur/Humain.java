@@ -6,8 +6,8 @@ import Modele.Coup;
 
 class Humain extends Joueur{
 
-    Humain (int num, Niveau n){
-        super(num,n);
+    Humain (int type, Niveau n){
+        super(type,n);
     }
 
     @Override

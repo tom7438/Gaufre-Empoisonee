@@ -2,13 +2,14 @@ package Controlleur;
 
 import java.util.Random;
 import Modele.Niveau;
+import Controlleur.ControleurMediateur;
 
 
 class IA_facile extends Joueur {
 	Random r;
 
-	public IA_facile(int num, Niveau n) {
-		super(num, n);
+	public IA_facile(int type, Niveau n) {
+		super(type, n);
 		r = new Random();
 	}
 
@@ -22,8 +23,9 @@ class IA_facile extends Joueur {
 			ok = niveau.jouer(i, j);
 		}while(ok == 2); //pas de morceau sur cette case
 
+		//System.out.println("c'est le coup " +numero_coup);
+
 		System.out.println("L'IA a joué le coup : (" + i + "," + j + ")");
-		//System.out.println("LAAAAAAA");
 
 		if (ok == 0){
             return true;

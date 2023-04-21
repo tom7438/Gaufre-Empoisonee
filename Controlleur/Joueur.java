@@ -4,18 +4,18 @@ import Modele.Niveau;
 
 abstract class Joueur {
 	Niveau niveau;
-	int num;
+	int type;
 
 	// Le joueur connait son numéro, cela lui permet d'inspecter le plateau en
 	// sachant
 	// repérer ses pions et évaluer où il en est
 	Joueur(int n, Niveau p) {
-		num = n;
+		type = n;
 		niveau = p;
 	}
 
-	int num() {
-		return num;
+	int type() {
+		return type;
 	}
 
 	// Méthode appelée pour tous les joueurs une fois le temps écoulé
