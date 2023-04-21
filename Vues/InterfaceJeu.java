@@ -36,10 +36,10 @@ public class InterfaceJeu extends InterfaceGraphique{
     @Override
     public void run() {
         frame = new JFrame("Gaufre empoisonnée !");
-        frame.setSize(800, 600);
+        frame.setSize(700, 450);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Taille minimum de la fenêtre (pour le redimensionnement)
-        frame.setMinimumSize(new Dimension(800,600));
+        frame.setMinimumSize(new Dimension(700,450));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
@@ -50,6 +50,8 @@ public class InterfaceJeu extends InterfaceGraphique{
 
         // Création du panel de contrôle
         controlsPanel = new JPanel();
+        // Taille minimale du panel de contrôle
+        controlsPanel.setMinimumSize(new Dimension(300, 0));
         jPanel1 = new JPanel();
         jPanel2 = new JPanel();
         jPanel3 = new JPanel();
@@ -60,7 +62,9 @@ public class InterfaceJeu extends InterfaceGraphique{
         annuler = createButton("<");
         refaire = createButton(">");
         sauvegarder = createButton("Sauvegarder");
-        nouvellePartie = createButton("Nouvelle\nPartie");
+        sauvegarder.setMinimumSize(new Dimension(150, 50));
+        nouvellePartie = createButton("Nouvelle Partie");
+        nouvellePartie.setMinimumSize(new Dimension(150, 50));
         menuPrincipal = createButton("Menu Principal");
         quitter = createButton("Exit");
         // TODO : score si plusieurs parties
@@ -78,7 +82,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         jPanel3.add(gaufrePanel, BorderLayout.CENTER);
 
         // Panel de contrôle
-        controlsPanel.setPreferredSize(new Dimension(200, 316));
+        controlsPanel.setPreferredSize(new Dimension(300, 316));
         controlsPanel.setLayout(new GridLayout(4, 1, 0, 20));
 
         controlsPanel.add(score);
@@ -90,11 +94,17 @@ public class InterfaceJeu extends InterfaceGraphique{
         annulerRefairePanel.add(Box.createRigidArea(new Dimension(50,0))); // Espacement entre les boutons
         annulerRefairePanel.add(refaire);
         annulerRefairePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à droite des boutons
+        annulerRefairePanel.setMinimumSize(new Dimension(400, 50));
         controlsPanel.add(annulerRefairePanel);
 
         JPanel sauvegarderNouvellePartiePanel = new JPanel(new GridLayout(1, 2));
+        sauvegarderNouvellePartiePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        sauvegarderNouvellePartiePanel.setLayout(new BoxLayout(sauvegarderNouvellePartiePanel, BoxLayout.X_AXIS));
+        sauvegarderNouvellePartiePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à gauche des boutons
         sauvegarderNouvellePartiePanel.add(sauvegarder);
+        sauvegarderNouvellePartiePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement entre les boutons
         sauvegarderNouvellePartiePanel.add(nouvellePartie);
+        sauvegarderNouvellePartiePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à droite des boutons
         controlsPanel.add(sauvegarderNouvellePartiePanel);
 
         quitter.addMouseListener(new MouseInputAdapter() {
@@ -103,10 +113,17 @@ public class InterfaceJeu extends InterfaceGraphique{
                 fermer();
             }
         });
-        controlsPanel.add(quitter);
+        quitter.setMinimumSize(new Dimension(50, 20));
+        quitter.setPreferredSize(new Dimension(50, 20));
+        quitter.setHorizontalAlignment(SwingConstants.CENTER);
+        quitter.setVerticalAlignment(SwingConstants.CENTER);
+        JPanel quitterPanel = new JPanel(new GridLayout(1, 1));
+        quitterPanel.setLayout(new BoxLayout(quitterPanel, BoxLayout.Y_AXIS));
+        quitterPanel.add(Box.createVerticalGlue());
+        quitterPanel.add(quitter, BorderLayout.CENTER);
+        quitterPanel.add(Box.createVerticalGlue());
+        controlsPanel.add(quitterPanel);
 
-        // Taille minimale du panel de contrôle
-        controlsPanel.setMinimumSize(new Dimension(200, 316));
 
         jPanel3.add(controlsPanel, BorderLayout.EAST);
 
