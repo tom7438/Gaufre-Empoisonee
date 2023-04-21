@@ -12,7 +12,7 @@ public class IA_Difficile2 extends Joueur{
     @Override
     boolean jeu(){
         int ok;
-        if (niveau.colonnes == 3 && niveau.lignes == 2);
+        if (niveau.colonnes == 3 && niveau.lignes == 2){
             if(niveau.aMorceau(1,2)){
                 ok = niveau.jouer(1,2);
             } else if(!niveau.aMorceau(0,1)){
