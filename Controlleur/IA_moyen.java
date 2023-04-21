@@ -16,7 +16,7 @@ class IA_moyen extends Joueur {
 	}
 
 	@Override
-    boolean jeu(){  
+    boolean jeu(int num){  
 		int i, j;
 		int ok;
 		do{

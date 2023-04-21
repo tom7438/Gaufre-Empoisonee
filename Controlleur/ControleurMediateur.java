@@ -16,10 +16,13 @@ public class ControleurMediateur implements CollecteurEvenements {
 		jeu = j;
 		joueurs = new Joueur[2];
 
-		joueurs[0] = new Humain(0, j.niveau); //DEFINIR le type du joueur
-		joueurs[1] = new IA_moyen(1, j.niveau); 
+		//type 1 = IA;
+		//type 0 = Humain;
+		joueurs[0] = new IA_Difficile(1, j.niveau); 
+		joueurs[1] = new Humain(0, j.niveau); //DEFINIR le type du joueur
 		//joueurs[1] = new IA_moyen(1, j.niveau); 
 
+		
 		//System.out.println("Le type " +joueurs[0].type()); 
 		joueurCourant = 0;
 
@@ -28,7 +31,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 			
 
 			System.out.println("C'est au tour du joueur " + joueurCourant);
-			if (joueurs[joueurCourant].jeu()){//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
+			if (joueurs[joueurCourant].jeu(numero_coup)){//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
 				changeJoueur();
 				numero_coup += 1;
 			}

@@ -11,7 +11,7 @@ class Humain extends Joueur{
     }
 
     @Override
-    boolean jeu(){   
+    boolean jeu(int num){   
         int ok;
         do{
          Coup p = new Coup(niveau);
