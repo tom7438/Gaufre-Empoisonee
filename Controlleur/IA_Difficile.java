@@ -1,20 +1,23 @@
 package Controlleur;
 
 import Modele.Niveau;
+import java.util.Random;
+
 
 public class IA_Difficile extends Joueur{
 
+    Random r;
+
     IA_Difficile(int n, Niveau p) {
         super(n, p);
-        //TODO Auto-generated constructor stub
+        r = new Random();
     }
 
     @Override
     boolean jeu(int num){
         int i,j;
-        int max = 0;
 
-        int info_max = -1; //ici on va mettre a 1 si le max est sur la ligne, 0 si c'est sur la colonne
+        int nb_lignes = 0, nb_colonnes =0;
 
         System.out.println("Numero de coup " +num);
         if (niveau.getLigne() == niveau.getColonne()){
@@ -24,46 +27,51 @@ public class IA_Difficile extends Joueur{
                 niveau.jouer(i,j); 
                 return true;
             }
-            if (num >= 3){
-                for(i=niveau.getLigne() -1; i==1; i--){
-                    if (niveau.aMorceau(i, 0)){
-                        max = i;
-                        info_max = 1;
-                        System.out.println("Max_lignes : " +max);
-
-                        break;
-                    }
-                }
-
-                for(i=niveau.getColonne()-1; i==1; i--){
-                    if (niveau.aMorceau(0, i)){
-                        if (i>max)
-                            max = i;
-                            info_max = 0;
-                            System.out.println("Max_colonnes : " +max);
-
-                        break;
-                    }
-                    if (i<max) //Inutile d'aller chercher un max plus bas
-                        break; 
-                }
-
-
-                if (info_max == 1){
-                    niveau.jouer(max, 0);
+            else if(num == 2) {
+                if(niveau.aMorceau(1, 1)){
+                    niveau.jouer(1,1); 
                     return true;
+                }
+                num =3;
+            }
+            if (num >= 3){
+                //System.out.println("Nombre de lignes " +(niveau.getLigne() -1));
+                for(i=niveau.getLigne() -1; i!=0; i--){
+                    if (niveau.aMorceau(i, 0)){
+                        nb_lignes = i; //ligne max avec un morceau;
+                        break;
+                    }
+                }
+
+                for(i=niveau.getColonne()-1; i!=0; i--){
+                    if (niveau.aMorceau(0, i)){
+                        nb_colonnes = i;
+                        break;
+                    }
+                }
+
+                if (nb_lignes > nb_colonnes){
+                    System.out.println("L'IA difficile a joué le coup (" + (nb_colonnes + 1) + "," + 0 +")" );
+                    niveau.jouer(nb_colonnes +1, 0);
+                }
+                else if (nb_lignes < nb_colonnes){
+                    System.out.println("L'IA difficile a joué le coup (" + 0 + "," + (nb_lignes + 1) +")");
+                    niveau.jouer(0, nb_lignes +1);
                 }
                 else{
-                    niveau.jouer(0, max);
-                    return true;
+                    i = r.nextInt(2);
+                    if (i == 0){
+                        System.out.println("L'IA difficile a joué le coup (" + 0 + "," + nb_lignes +")");
+                        niveau.jouer(0, nb_lignes );
+                    }
+                    else{
+                        System.out.println("L'IA difficile a joué le coup (" + 0 + "," + nb_colonnes +")");
+                        niveau.jouer(nb_colonnes, 0);
+                    }
                 }
+                return true;
             }
-
         }
         return false;
-
     }
-
-
-    
 }
