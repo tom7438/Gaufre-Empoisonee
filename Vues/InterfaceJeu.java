@@ -10,6 +10,13 @@ import java.awt.event.*;
 public class InterfaceJeu extends InterfaceGraphique{
     Jeu J;
     public JLabel currentPlayer;
+    JPanel controlsPanel;
+    JPanel jPanel2;
+    JPanel jPanel3;
+    JPanel gaufrePanel;
+    JPanel annulerRefairePanel;
+    JPanel sauvegarderNouvellePartiePanel;
+    JPanel quitterPanel;
 
     public InterfaceJeu(Jeu j) {
         this.J = j;
@@ -35,13 +42,12 @@ public class InterfaceJeu extends InterfaceGraphique{
         System.out.println("Taille de la gauffre : (" + J.niveau.getLigne() + "," + J.niveau.getColonne() + ")");
 
         // Création du panel de contrôle
-        JPanel controlsPanel = new JPanel();
+        controlsPanel = new JPanel();
         // Taille minimale du panel de contrôle
         controlsPanel.setMinimumSize(new Dimension(300, 0));
-        JPanel jPanel1 = new JPanel();
-        JPanel jPanel2 = new JPanel();
-        JPanel jPanel3 = new JPanel();
-        JPanel gaufrePanel = new JPanel();
+        jPanel2 = new JPanel();
+        jPanel3 = new JPanel();
+        gaufrePanel = new JPanel();
         currentPlayer = new JLabel("");
 
         ClickListener click = new ClickListener(this, 1);
@@ -83,7 +89,7 @@ public class InterfaceJeu extends InterfaceGraphique{
 
         controlsPanel.add(score);
 
-        JPanel annulerRefairePanel = new JPanel();
+        annulerRefairePanel = new JPanel();
         annulerRefairePanel.setLayout(new BoxLayout(annulerRefairePanel, BoxLayout.X_AXIS));
         annulerRefairePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à gauche des boutons
         annulerRefairePanel.add(annuler);
@@ -93,7 +99,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         annulerRefairePanel.setMinimumSize(new Dimension(400, 50));
         controlsPanel.add(annulerRefairePanel);
 
-        JPanel sauvegarderNouvellePartiePanel = new JPanel(new GridLayout(1, 2));
+        sauvegarderNouvellePartiePanel = new JPanel(new GridLayout(1, 2));
         sauvegarderNouvellePartiePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         sauvegarderNouvellePartiePanel.setLayout(new BoxLayout(sauvegarderNouvellePartiePanel, BoxLayout.X_AXIS));
         sauvegarderNouvellePartiePanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à gauche des boutons
@@ -111,7 +117,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         });
         quitter.setMinimumSize(new Dimension(50, 300));
         quitter.setPreferredSize(new Dimension(50, 30));
-        JPanel quitterPanel = new JPanel(new GridLayout(1, 2));
+        quitterPanel = new JPanel(new GridLayout(1, 2));
         quitterPanel.setLayout(new BoxLayout(quitterPanel, BoxLayout.X_AXIS));
         quitterPanel.add(Box.createRigidArea(new Dimension(10,0))); // Espacement à gauche des boutons
         quitterPanel.add(quitter);
@@ -147,5 +153,32 @@ public class InterfaceJeu extends InterfaceGraphique{
         } else {
             this.score.setText("<html>Joueur 1 : " + score1 + "<br>Joueur 2 : " + score2 + "<br>Match nul !</html>");
         }
+    }
+
+    public void rafraichir() {
+        // Mettre à jour le plateau de jeu
+        this.frame.getContentPane().removeAll();
+        VueGaufre vueGaufre = new VueGaufre(J, this);
+        vueGaufre.addMouseListener(new GaufreListener());
+        gaufrePanel.add(vueGaufre);
+        jPanel3.add(gaufrePanel, BorderLayout.CENTER);
+
+        // Vider le panel de controle pour remettre le score à jour
+        controlsPanel.removeAll();
+
+        controlsPanel.add(score);
+        controlsPanel.add(annulerRefairePanel);
+        controlsPanel.add(sauvegarderNouvellePartiePanel);
+        controlsPanel.add(quitterPanel);
+
+        jPanel3.add(controlsPanel, BorderLayout.EAST);
+        this.frame.getContentPane().add(jPanel3, BorderLayout.CENTER);
+
+        // Mettre à jour le joueur courant
+        jPanel2.removeAll();
+        currentPlayer.removeAll();
+        currentPlayer.setText("Le joueur " + J.getPlayer(J.getPlayer()).getPlayerName() + " joue");
+        jPanel2.add(currentPlayer, BorderLayout.CENTER);
+        this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
     }
 }

@@ -43,7 +43,6 @@ public class Jeu {
 		return enCours;
 	}
 	public boolean partieTerminee() {
-		joueurGagnant = joueurCourant;
 		return partieTerminee;
 	}
 
@@ -60,6 +59,7 @@ public class Jeu {
 
 		if (niveau.estTermine()) {
 			partieTerminee = true;
+			joueurGagnant = joueurCourant;
 		} else {
 			changeJoueur();
 		}
@@ -113,6 +113,11 @@ public class Jeu {
 		score[joueurGagnant] += i;
 	}
 
+	public void initialiserScore(){
+		score[0] = 0;
+		score[1] = 0;
+	}
+
 	public int getScore(int numeroJoueur){
 		return score[numeroJoueur];
 	}
@@ -122,10 +127,10 @@ public class Jeu {
 	}
 
 	public int getJoueurPerdant(){
-		if(joueurGagnant == 0)
-			return 1;
-		else
-			return 0;
+		return joueurGagnant == 1 ? 0 : 1;
 	}
 
+	public void setPartieTerminee() {
+		partieTerminee = false;
+	}
 }

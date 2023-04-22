@@ -47,19 +47,25 @@ public class ClickListener implements ActionListener {
                 // TODO
             } else if (e.getSource() == Graphique.menuPrincipal) {
                 IJ.fermer();
+                IJ.J.initialiserScore();
                 InterfaceMenu.demarrer(IJ.J);
             } else if(e.getSource() == Graphique.nouvellePartie) {
                 // Incrémenter le score
-                IJ.J.incrementerScore(1);
+                if(IJ.J.partieTerminee())
+                    IJ.J.incrementerScore(1);
 
                 // Afficher le score sur l'interface de jeu
                 IJ.setScoreLabel(IJ.J.getScore(0), IJ.J.getScore(1));
 
                 // Prendre le joueur qui commence comme le perdant
-                IJ.J.setJoueurCourant(IJ.J.getJoueurPerdant());
+                int perdant = IJ.J.getJoueurPerdant();
 
                 // Lancer une nouvelle partie
+                IJ.J.setPartieTerminee();
                 IJ.J.nouvellePartie(IJ.J.niveau.getLigne(), IJ.J.niveau.getColonne(), IJ.J.getPlayer(0), IJ.J.getPlayer(2));
+                IJ.J.setJoueurCourant(IJ.J.getJoueurPerdant());
+                // Rafraichir l'interface
+                IJ.rafraichir();
             } else if(e.getSource() == Graphique.sauvegarder) {
                 // TODO
             } else if(e.getSource() == Graphique.annuler) {
