@@ -14,6 +14,7 @@ abstract class InterfaceGraphique implements Runnable {
     JButton menuPrincipal;
     JButton rejouer;
     JButton quitter;
+    JLabel score;
     JFrame frame;
 
     public JButton createButton(String s) {

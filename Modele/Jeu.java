@@ -13,6 +13,8 @@ public class Jeu {
 	public int joueurCourant;
 	final int lenteurAttente = 50;
 	int decompte;
+	int [] score;
+	int joueurGagnant;
 
 	public void reset(int l, int c) {
 		enCours = true;
@@ -29,6 +31,9 @@ public class Jeu {
 
 	public void nouvellePartie(int l, int c, Joueur Joueur1, Joueur Joueur2) {
 		reset(l, c);
+		if(score == null) {
+			score = new int[2];
+		}
 		joueurs = new Joueur[2];
 		joueurs[0] = Joueur1;
 		joueurs[1] = Joueur2;
@@ -38,6 +43,7 @@ public class Jeu {
 		return enCours;
 	}
 	public boolean partieTerminee() {
+		joueurGagnant = joueurCourant;
 		return partieTerminee;
 	}
 
@@ -101,6 +107,25 @@ public class Jeu {
 
 	public void joue(){
 		tictac();
+	}
+
+	public void incrementerScore(int i){
+		score[joueurGagnant] += i;
+	}
+
+	public int getScore(int numeroJoueur){
+		return score[numeroJoueur];
+	}
+
+	public void setJoueurCourant(int i){
+		joueurCourant = i;
+	}
+
+	public int getJoueurPerdant(){
+		if(joueurGagnant == 0)
+			return 1;
+		else
+			return 0;
 	}
 
 }

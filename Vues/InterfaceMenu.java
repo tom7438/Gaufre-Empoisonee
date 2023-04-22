@@ -44,7 +44,7 @@ public class InterfaceMenu extends InterfaceGraphique {
         charger = createButton("Charger une partie");
         quitter = createButton("Exit");
 
-        ClickListener click = new ClickListener(this);
+        ClickListener click = new ClickListener(this, 0);
 
         play.addActionListener(click);
         charger.addActionListener(click);

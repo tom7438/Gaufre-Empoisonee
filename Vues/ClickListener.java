@@ -8,40 +8,68 @@ import javax.swing.JOptionPane;
 
 import Modele.Joueur;
 
-public class ClickListener implements ActionListener{
+public class ClickListener implements ActionListener {
     InterfaceGraphique Graphique;
+    int numeroInterface;
 
-    public ClickListener(InterfaceGraphique G){
-        Graphique=G;
+    public ClickListener(InterfaceGraphique G, int numInterface) {
+        Graphique = G;
+        numeroInterface = numInterface;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        InterfaceMenu M = ((InterfaceMenu) Graphique);
-        if(e.getSource() == Graphique.play){
-            if(M.getColonne().getForeground().equals(Color.gray) || M.getLigne().getForeground().equals(Color.gray) || Integer.parseInt(M.getLigne().getText()) > 30 || Integer.parseInt(M.getColonne().getText()) > 50){
-                JOptionPane.showMessageDialog(M.frame, "Lis bien bouffon, la taille est incorrecte là");
-            } else {
-                // Passe à l'interface Jeu
-                int l = Integer.parseInt(M.getLigne().getText());
-                int c = Integer.parseInt(M.getColonne().getText());
+        if (numeroInterface == 0) {
+            InterfaceMenu M = ((InterfaceMenu) Graphique);
+            if (e.getSource() == Graphique.play) {
+                if (M.getColonne().getForeground().equals(Color.gray) || M.getLigne().getForeground().equals(Color.gray) || Integer.parseInt(M.getLigne().getText()) > 30 || Integer.parseInt(M.getColonne().getText()) > 50) {
+                    JOptionPane.showMessageDialog(M.frame, "Lis bien bouffon, la taille est incorrecte là");
+                } else {
+                    // Passe à l'interface Jeu
+                    int l = Integer.parseInt(M.getLigne().getText());
+                    int c = Integer.parseInt(M.getColonne().getText());
 
-                Joueur J1 = M.getJ1(), J2 = M.getJ2();
+                    Joueur J1 = M.getJ1(), J2 = M.getJ2();
 
-                if (J1 == null || J2 == null) {
-                    JOptionPane.showMessageDialog(M.frame, "Joueurs incorrects oww!");
-                    return;
+                    if (J1 == null || J2 == null) {
+                        JOptionPane.showMessageDialog(M.frame, "Joueurs incorrects oww!");
+                        return;
+                    }
+
+                    M.J.nouvellePartie(l, c, J1, J2);
+                    M.fermer();
+                    InterfaceJeu.demarrer(M.J);
                 }
-
-                M.J.nouvellePartie(l, c, J1, J2);
-                M.fermer();
-                InterfaceJeu.demarrer(M.J);
             }
-        }else if(e.getSource() == Graphique.quitter) {
-            M.fermer();
-        }else if(e.getSource() == Graphique.charger){
-            // TODO
-        }// TODO : Buttons Jeu
-    }
+        } else if (numeroInterface == 1) {
+            InterfaceJeu IJ = ((InterfaceJeu) Graphique);
+            if (e.getSource() == Graphique.charger) {
+                // TODO
+            } else if (e.getSource() == Graphique.menuPrincipal) {
+                IJ.fermer();
+                InterfaceMenu.demarrer(IJ.J);
+            } else if(e.getSource() == Graphique.nouvellePartie) {
+                // Incrémenter le score
+                IJ.J.incrementerScore(1);
 
+                // Afficher le score sur l'interface de jeu
+                IJ.setScoreLabel(IJ.J.getScore(0), IJ.J.getScore(1));
+
+                // Prendre le joueur qui commence comme le perdant
+                IJ.J.setJoueurCourant(IJ.J.getJoueurPerdant());
+
+                // Lancer une nouvelle partie
+                IJ.J.nouvellePartie(IJ.J.niveau.getLigne(), IJ.J.niveau.getColonne(), IJ.J.getPlayer(0), IJ.J.getPlayer(2));
+            } else if(e.getSource() == Graphique.sauvegarder) {
+                // TODO
+            } else if(e.getSource() == Graphique.annuler) {
+                // TODO
+            } else if(e.getSource() == Graphique.refaire) {
+                // TODO
+            }
+        }
+        if (e.getSource() == Graphique.quitter) {
+            Graphique.fermer();
+        }
+    }
 }

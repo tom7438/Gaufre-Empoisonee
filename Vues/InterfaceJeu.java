@@ -9,22 +9,8 @@ import java.awt.event.*;
 
 public class InterfaceJeu extends InterfaceGraphique{
     Jeu J;
-    private JButton play;
-    private JButton charger;
-    private JButton annuler;
-    private JButton refaire;
-    private JButton sauvegarder;
-    private JButton nouvellePartie;
-    private JButton menuPrincipal;
-    private JButton quitter;
-    private JLabel score;
-
-    private JPanel controlsPanel;
     public JLabel currentPlayer;
-    private JPanel gaufrePanel;
-    private JPanel jPanel1;
-    private JPanel jPanel2;
-    private JPanel jPanel3;
+
     public InterfaceJeu(Jeu j) {
         this.J = j;
     }
@@ -49,14 +35,16 @@ public class InterfaceJeu extends InterfaceGraphique{
         System.out.println("Taille de la gauffre : (" + J.niveau.getLigne() + "," + J.niveau.getColonne() + ")");
 
         // Création du panel de contrôle
-        controlsPanel = new JPanel();
+        JPanel controlsPanel = new JPanel();
         // Taille minimale du panel de contrôle
         controlsPanel.setMinimumSize(new Dimension(300, 0));
-        jPanel1 = new JPanel();
-        jPanel2 = new JPanel();
-        jPanel3 = new JPanel();
-        gaufrePanel = new JPanel();
+        JPanel jPanel1 = new JPanel();
+        JPanel jPanel2 = new JPanel();
+        JPanel jPanel3 = new JPanel();
+        JPanel gaufrePanel = new JPanel();
         currentPlayer = new JLabel("");
+
+        ClickListener click = new ClickListener(this, 1);
 
         charger = createButton("Charger");
         annuler = createButton("<");
@@ -67,9 +55,17 @@ public class InterfaceJeu extends InterfaceGraphique{
         nouvellePartie.setMinimumSize(new Dimension(150, 50));
         menuPrincipal = createButton("Menu Principal");
         quitter = createButton("Exit");
-        // TODO : score si plusieurs parties
         score = new JLabel("Score : ");
         score.setHorizontalAlignment(JLabel.CENTER);
+
+        // Ajout des listeners
+        charger.addActionListener(click);
+        annuler.addActionListener(click);
+        refaire.addActionListener(click);
+        sauvegarder.addActionListener(click);
+        nouvellePartie.addActionListener(click);
+        menuPrincipal.addActionListener(click);
+        quitter.addActionListener(click);
 
         jPanel3.setLayout(new BorderLayout());
         gaufrePanel.setLayout(new BorderLayout());
@@ -141,5 +137,15 @@ public class InterfaceJeu extends InterfaceGraphique{
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
 
         this.frame.setVisible(true);
+    }
+
+    public void setScoreLabel(int score1, int score2) {
+        if (score1 > score2) {
+            this.score.setText("<html>Joueur 1 : " + score1 + "<br>Joueur 2 : " + score2 + "<br>Joueur 1 gagne !</html>");
+        } else if (score1 < score2) {
+            this.score.setText("<html>Joueur 1 : " + score1 + "<br>Joueur 2 : " + score2 + "<br>Joueur 2 gagne !</html>");
+        } else {
+            this.score.setText("<html>Joueur 1 : " + score1 + "<br>Joueur 2 : " + score2 + "<br>Match nul !</html>");
+        }
     }
 }
