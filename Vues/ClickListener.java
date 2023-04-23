@@ -62,9 +62,9 @@ public class ClickListener implements ActionListener {
 
                 // Lancer une nouvelle partie
                 IJ.J.setPartieTerminee();
-                IJ.J.nouvellePartie(IJ.J.niveau.getLigne(), IJ.J.niveau.getColonne(), IJ.J.getPlayer(0), IJ.J.getPlayer(2));
-                IJ.J.setJoueurCourant(IJ.J.getJoueurPerdant());
+                IJ.J.nouvellePartie(IJ.J.niveau.getLigne(), IJ.J.niveau.getColonne(), IJ.J.getPlayer(0), IJ.J.getPlayer(1));
                 // Rafraichir l'interface
+                IJ.J.setJoueurCourant(perdant);
                 IJ.rafraichir();
             } else if(e.getSource() == Graphique.sauvegarder) {
                 // TODO

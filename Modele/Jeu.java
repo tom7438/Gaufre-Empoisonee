@@ -94,6 +94,8 @@ public class Jeu {
 	}
 
 	public Joueur getPlayer(int i) {
+		if(i != 0 && i != 1)
+			throw new IllegalArgumentException("Le numéro de joueur doit être 0 ou 1");
 		return joueurs[i % 2];
 	}
 

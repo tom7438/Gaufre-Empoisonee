@@ -180,5 +180,6 @@ public class InterfaceJeu extends InterfaceGraphique{
         currentPlayer.setText("Le joueur " + J.getPlayer(J.getPlayer()).getPlayerName() + " joue");
         jPanel2.add(currentPlayer, BorderLayout.CENTER);
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
+        this.frame.setVisible(true);
     }
 }
