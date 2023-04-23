@@ -58,4 +58,12 @@ public class Pile {
         return sommet + 1;
     }
 
+    //On vide la pile
+    public void vider() {
+        while (!estVide()) {
+            depiler();
+        }
+        sommet = -1;
+    }
+
 }

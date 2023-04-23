@@ -64,11 +64,26 @@ public class ControleurMediateur implements CollecteurEvenements {
 		while(!jeu.niveau.estTermine()){
 			System.out.println("Plateau :\n" + jeu.niveau.toString());
 			
+			//On demande si le joeur veut retourner en arriere
+			System.out.println("Voulez vous retourner en arriere ? (O/N)");
+			Scanner s = new Scanner(System.in);
+			String reponse = s.nextLine();
+			if(reponse.equals("O")){
+				jeu.reset_Niveau();
+				changeJoueur();
+				numero_coup -= 1;
+				continue;
+			}
+
 
 			System.out.println("C'est au tour du joueur " + joueurCourant);
 			if (joueurs[joueurCourant].jeu(numero_coup)){//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
+				//On sauvegarde le niveau après le coup
+				jeu.return_pile.empiler(jeu.niveau.clone());
 				changeJoueur();
 				numero_coup += 1;
+				//On vide la pile avancer
+				jeu.avance_pile.vider();
 			}
 			else
 				break;
