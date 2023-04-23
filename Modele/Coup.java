@@ -7,9 +7,9 @@ public class Coup {
     public int caseChoisieC;
     public int joueurCourant;
 
-    public Niveau n;
+    public Niveau niveau;
     public Coup(Niveau n) {
-        this.n = n;
+        this.niveau = n;
         Scanner Scanner = new Scanner(System.in);
         do {
             System.out.println("Choisir les coordonnées de la case à jouer (l, c)");

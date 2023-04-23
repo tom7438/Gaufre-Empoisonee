@@ -2,26 +2,134 @@ package Controlleur;
 
 import Modele.Jeu;
 import Vues.CollecteurEvenements;
+import java.util.Scanner;
+
 
 public class ControleurMediateur implements CollecteurEvenements {
 	Jeu jeu;
-	//Joueur[][] joueurs;
+	Joueur[] joueurs;
 	int [] typeJoueur;
 	int joueurCourant;
 	final int lenteurAttente = 50;
 	int decompte;
+	int niveau_IA = 1; //1 pour facile 2 pour moyen 3 pour difficile
+	int type_joueur =1; //0 pour Humain et 1 pour IA
+
+	public int numero_coup=1;
 
 	public ControleurMediateur(Jeu j) {
 		jeu = j;
-		// joueurs = new Joueur[2][2];
-		// typeJoueur = new int[2];
-		// for (int i = 0; i < joueurs.length; i++) {
-		// 	joueurs[i][0] = new JoueurHumain(i, jeu);
-		// 	joueurs[i][1] = new JoueurIA(i, jeu);
-		// 	typeJoueur[i] = 0;
-		// }
+		joueurs = new Joueur[2];
+
+
+		//affiche_type_default();
+		for (int i=0; i<joueurs.length; i++){
+			int type = demande_type(i);
+			if (type == -1){
+				joueurs[i] = new IA_facile(1, j.niveau); //par default;
+
+			}
+			else if(type == 0){
+				joueurs[i] =new Humain(type, j.niveau);
+			}
+			else {
+				niveau_IA = demande_niveau_IA();
+				switch (niveau_IA){
+					case 1:
+						joueurs[i] = new IA_facile(1, j.niveau);
+						break;
+					case 2:
+						joueurs[i] = new IA_moyen(2, j.niveau); 
+						break;
+					case 3:
+						joueurs[i] = new IA_Difficile(3, j.niveau);
+						break;
+
+				}
+			}
+		}
+		//type 1 = IA;
+		//type 0 = Humain;
+		// joueurs[0] = new IA_Difficile(1, j.niveau); 
+		// joueurs[1] = new Humain(0, j.niveau); //DEFINIR le type du joueur
+		//joueurs[1] = new IA_moyen(1, j.niveau); 
+
+		//System.out.println("Le type " +joueurs[0].type()); 
+		if(joueur0commence() == 1){
+			joueurCourant = 1;
+		}else{
+			joueurCourant = 0;
+		}
+
+		while(!jeu.niveau.estTermine()){
+			System.out.println("Plateau :\n" + jeu.niveau.toString());
+			
+
+			System.out.println("C'est au tour du joueur " + joueurCourant);
+			if (joueurs[joueurCourant].jeu(numero_coup)){//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
+				changeJoueur();
+				numero_coup += 1;
+			}
+			else
+				break;
+		}
+
+		System.out.println("Plateau :\n" + jeu.niveau.toString());
+		System.out.println("Le joueur " + joueurCourant + " a perdu");
+		//
+
 	}
 
+
+	// private void affiche_type_default(){
+	// 	for (int i =0; i<2; i++){
+	// 		String s ="";
+	// 		if(joueurs[i].type == 0){
+	// 			s += "Type 0 : HUMAIN ";
+	// 		}
+	// 		else{
+	// 			s+="Type 1 : IA";
+	// 		}
+	// 		System.out.println("Le type du joueur " +i+ " est "  +s );
+	// 	}
+	// }
+
+	public int joueur0commence(){
+		Scanner s = new Scanner(System.in);
+		int joueur;
+		do{
+			System.out.println("Indiquez si le joueur 0 commence ou le joueur 1");
+			joueur = s.nextInt();
+		}
+		while(joueur < 0 || joueur > 1);
+		return joueur;
+	}
+
+	public int demande_type(int num_joueur){
+		Scanner s = new Scanner(System.in);
+		int type;
+		do{
+		System.out.println("Entrez le numéro du type du joueur: " + num_joueur +"\n -1 = Par default || 0 = Humain || 1 = IA");
+		type = s.nextInt();
+		}
+		while(type < -1 || type > 1);
+		return type;
+	}
+
+	public int demande_niveau_IA(){
+		Scanner s = new Scanner(System.in);
+		int type;
+		do{
+		System.out.println("Entrez le niveau de l'IA \n 1 = Facile || 2 = Moyen || 3 = Difficile");
+		type = s.nextInt();
+		}
+		while(type < 0 || type > 3);
+		return type;
+	}
+
+	public void joue(){
+		tictac();
+	}
 	// @Override
 	// public void clicSouris(int l, int c) {
 	// 	// Lors d'un clic, on le transmet au joueur courant.
@@ -34,25 +142,27 @@ public class ControleurMediateur implements CollecteurEvenements {
 		//joueurCourant = (joueurCourant + 1) % joueurs.length;
 		joueurCourant = (joueurCourant + 1) % 2;
 		decompte = lenteurAttente;
+
+		//joue();
 	}
 
 	public void tictac() {
-		// if (jeu.enCours()) {
-		// 	if (decompte == 0) {
-		// 		int type = typeJoueur[joueurCourant];
-		// 		// Lorsque le temps est écoulé on le transmet au joueur courant.
-		// 		// Si un coup a été joué (IA) on change de joueur.
-		// 		if (joueurs[joueurCourant][type].tempsEcoule()) {
-		// 			changeJoueur();
-		// 		} else {
-		// 		// Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
-		// 			System.out.println("On vous attend, joueur " + joueurs[joueurCourant][type].num());
-		// 			decompte = lenteurAttente;
-		// 		}
-		// 	} else {
-		// 		decompte--;
-		// 	}
-		// }
+		if (jeu.enCours()) {
+			if (decompte == 0) {
+				int type = typeJoueur[joueurCourant];
+				// Lorsque le temps est écoulé on le transmet au joueur courant.
+				// Si un coup a été joué (IA) on change de joueur.
+				if (joueurs[joueurCourant].tempsEcoule()) {
+					changeJoueur();
+				} else {
+				// Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
+					System.out.println("On vous attend, joueur " + joueurs[joueurCourant].num());
+					decompte = lenteurAttente;
+				}
+			} else {
+				decompte--;
+			}
+		}
 	}
 
 	// @Override

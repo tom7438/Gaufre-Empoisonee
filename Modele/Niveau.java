@@ -135,7 +135,16 @@ public class Niveau {
     @Override
     public String toString() {
         String s = "";
+        
+        s += "  " ;
+        for(int i=0; i< colonnes; i++){
+            s += i + " ";
+        }
+        
+        s += "\n";
+
         for (int i = 0; i < lignes; i++) {
+                s += i +" ";
             for (int j = 0; j < colonnes; j++) {
                 if(contenu[i][j] == MORCEAU_EMPOISONNE)
                     s += "X ";
@@ -167,14 +176,15 @@ public class Niveau {
             this.effacerRectangle(caseChoisieL, caseChoisieC);
             return 0;
         } else if(this.aMorceauEmpoisonne(caseChoisieL, caseChoisieC)) {
-            logger.info("Fin de partie");
-            System.out.println("Vous avez mangé un morceau empoisonné");
-            System.out.println("Vous avez perdu");
-            System.out.println("Fin du jeu");
-            System.out.println("Merci d'avoir joué connard");
+
+            System.out.println("Vous avez mangé le morceau empoisonné");
+            // System.out.println("Vous avez perdu");
+            // System.out.println("Fin du jeu");
+            // System.out.println("Merci d'avoir joué connard");
+
             return 1;
         } else {
-            System.out.println("Il n'y a pas de morceau à cette case");
+            //System.out.println("Il n'y a pas de morceau à cette case");
             return 2;
         }
     }
