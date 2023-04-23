@@ -34,7 +34,7 @@ public class Joueur {
     }
 
     public boolean jeu(){
-        System.out.println("ICIIII");
+        //TODO on renvoi false donc on a le print "le joueur 0 a perdu" 
         return false;
     }
 

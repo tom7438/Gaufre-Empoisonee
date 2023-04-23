@@ -20,7 +20,6 @@ public class IA_facile extends Joueur {
     }
 
     public boolean jeu(){
-		System.out.println("JE SUIS l'IA FACILE");
 		int i, j;
 		int ok;
 		do{
@@ -29,13 +28,19 @@ public class IA_facile extends Joueur {
 			ok = niveau.jouer(i, j);
 		}while(ok == 2); //pas de morceau sur cette case
 
-		System.out.println("L'IA a joué le coup : (" + i + "," + j + ")");
-		//System.out.println("LAAAAAAA");
-
+		
 		if (ok == 0){
+			System.out.println("L'IA_facile a joué le coup : (" + i + "," + j + ")");
             return true;
         }
-		return false;
+
+		return false; //On a mangé le morceau empisonné
 
 	}
+
+	@Override
+	public boolean tempsEcoule() {
+        return true;
+
+    }
 }

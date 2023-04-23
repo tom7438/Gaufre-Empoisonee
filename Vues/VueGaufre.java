@@ -9,7 +9,7 @@ import java.awt.*;
 public class VueGaufre extends JComponent {
     Niveau N;
     Jeu G;
-    InterfaceJeu IJ;
+    public InterfaceJeu IJ;
     public int largeurCase, hauteurCase;
 
     public VueGaufre(Jeu J, InterfaceJeu JI){

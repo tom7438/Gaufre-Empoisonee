@@ -9,7 +9,7 @@ import java.awt.event.*;
 import javax.swing.Timer;
 
 public class InterfaceJeu extends InterfaceGraphique{
-    Jeu J;
+    public Jeu J;
     public JLabel currentPlayer;
     JPanel controlsPanel;
     JPanel jPanel2;
@@ -146,7 +146,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
 
 
-        Timer chrono = new Timer( 16, new AdaptateurTemps(control));
+        Timer chrono = new Timer( 16, new AdaptateurTemps(control, vueGaufre));
 		chrono.start();
 
         this.frame.setVisible(true);

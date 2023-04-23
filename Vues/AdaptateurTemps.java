@@ -31,13 +31,18 @@ import java.awt.event.ActionListener;
 
 public class AdaptateurTemps implements ActionListener {
 	CollecteurEvenements control;
+	//InterfaceJeu IJ;
+	VueGaufre v ;
 
-	AdaptateurTemps(CollecteurEvenements c) {
+	AdaptateurTemps(CollecteurEvenements c, VueGaufre vueGaufre) {
 		control = c;
+		v = vueGaufre;
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		control.tictac();
+		control.tictac(v);
+		v.repaint();
 	}
 }

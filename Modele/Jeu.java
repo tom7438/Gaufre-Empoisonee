@@ -1,9 +1,10 @@
 package Modele;
 
 import Controlleur.*;
+import Vues.InterfaceJeu;
 
 public class Jeu {
-	boolean enCours;
+	public boolean enCours;
 	boolean partieTerminee;
 	public Niveau niveau;
 
@@ -14,7 +15,7 @@ public class Jeu {
 	final int lenteurAttente = 50;
 	int decompte;
 	int [] score;
-	int joueurGagnant;
+	public int joueurGagnant;
 
 	public void reset(int l, int c) {
 		enCours = true;
@@ -42,6 +43,11 @@ public class Jeu {
 	public boolean enCours() {
 		return enCours;
 	}
+
+	public void setEnCours(boolean b) {
+        enCours = b;
+    }
+
 	public boolean partieTerminee() {
 		return partieTerminee;
 	}

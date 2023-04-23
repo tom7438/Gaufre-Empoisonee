@@ -14,6 +14,11 @@ class IA_moyen extends Joueur {
 		r = new Random();
 	}
 
+	public IA_moyen(Joueur joueur, Niveau niv) {
+		super(joueur.getPlayerName(), true, joueur.getDifficulteIA(), niv);
+		r = new Random();
+    }
+
     public boolean jeu(){
 		int i, j;
 		int ok;
@@ -29,7 +34,7 @@ class IA_moyen extends Joueur {
 				
 		}while (niveau.aMorceau(i+1,0) || niveau.aMorceau(0, i+1)); //si l'IA mange l'empoisonné alors 
 	
-		System.out.println("L'IA a joué le coup : (" + i + "," + j + ")");
+		System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
 
 		if (ok == 0){
             return true;
@@ -38,5 +43,10 @@ class IA_moyen extends Joueur {
 		return false;
 
 	}
+
+	@Override
+	public boolean tempsEcoule() {
+        return true;
+    }
 
 }

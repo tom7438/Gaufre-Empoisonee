@@ -2,56 +2,79 @@ package Controlleur;
 
 import Modele.Jeu;
 import Vues.CollecteurEvenements;
+import Vues.InterfaceJeu;
+import Vues.VueGaufre;
 
 public class ControleurMediateur implements CollecteurEvenements {
 	Jeu jeu;
 	int decompte;
+	final int lenteurAttente = 50;
+
 
 	public ControleurMediateur(Jeu j) {
 		jeu = j;
 
-		while(!jeu.niveau.estTermine()){
-			System.out.println("Plateau :\n" + jeu.niveau.toString());
+		// while(!jeu.niveau.estTermine()){
+		// 	System.out.println("Plateau :\n" + jeu.niveau.toString());
 
 
-			System.out.println("C'est au tour du joueur " + jeu.joueurCourant);
-			if (jeu.joueurs[jeu.joueurCourant].jeu())//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
-				jeu.changeJoueur();
-			else
-				break;
-		}
+		// 	System.out.println("C'est au tour du joueur " + jeu.joueurCourant);
+		// 	//if (jeu.joueurs[jeu.joueurCourant].jeu())//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
+		// 		//jeu.changeJoueur();
+		// }
 
-		System.out.println("Le joueur " + jeu.joueurCourant + " a perdu");
-		//
+		// System.out.println("Le joueur " + jeu.joueurCourant + " a perdu");
+		// //
 
 	}
 
 	@Override
-	public void tictac() {
+	public void tictac(VueGaufre v) {
 		//System.out.println("ICCI");
-		if (jeu.enCours()) {
+		
+		if (v.IJ.J.enCours()) {
 			if (decompte == 0) {
-				int type = jeu.type_joueur(jeu.joueurCourant);
+				int type = v.IJ.J.type_joueur(v.IJ.J.joueurCourant);
 				// Lorsque le temps est écoulé on le transmet au joueur courant.
 				// Si un coup a été joué (IA) on change de joueur.
 				switch(type){
 					case -1:
+						System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
+						decompte = lenteurAttente;
 						break;
 					case 0:
 						//System.out.println("Jouer l'ia facile");
-						IA_facile IA = new IA_facile (jeu.joueurs[jeu.joueurCourant], jeu.niveau);
-						IA.jeu();
-						jeu.changeJoueur();
+						IA_facile IA_facile = new IA_facile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
+						if (IA_facile.jeu() == false){
+							v.IJ.J.setEnCours(false) ;
+							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
+						}
+						 else {
+							v.IJ.J.changeJoueur();
+						}
+						break;
+						
+					case 1:
+						IA_moyen IA_moy = new IA_moyen (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
+						if (IA_moy.jeu() == false){
+							v.IJ.J.setEnCours(false) ;
+							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
+						}
+						 else {
+							v.IJ.J.changeJoueur();
+						}
+						break;
+
+					// case 2:
+					// 	//TODO IA diff
+					
 					default:
 						//TODO
 				}
-				// if (joueurs[joueurCourant][type].tempsEcoule()) {
-				// 	changeJoueur();
-				// } else {
-				// // Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
-				// 	System.out.println("On vous attend, joueur " + joueurs[joueurCourant][type].num());
-				// 	decompte = lenteurAttente;
-				// }
+				
+				//System.out.println("Le joueur " + jeu.joueurCourant);
+
+				
 			} else {
 				decompte--;
 			}
