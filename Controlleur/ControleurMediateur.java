@@ -2,7 +2,6 @@ package Controlleur;
 
 import Modele.Jeu;
 import Vues.CollecteurEvenements;
-import Vues.InterfaceJeu;
 import Vues.VueGaufre;
 
 public class ControleurMediateur implements CollecteurEvenements {
@@ -32,33 +31,41 @@ public class ControleurMediateur implements CollecteurEvenements {
 	public void tictac(VueGaufre v) {
 		//System.out.println("ICCI");
 		
-		if (v.IJ.J.enCours()) {
+		if (v.IJ.J.enCours && !v.IJ.J.partieTerminee){
+			//System.out.println("En cours : "+v.IJ.J.enCours+" partie terminee : "+v.IJ.J.partieTerminee);
 			if (decompte == 0) {
 				int type = v.IJ.J.type_joueur(v.IJ.J.joueurCourant);
 				// Lorsque le temps est écoulé on le transmet au joueur courant.
 				// Si un coup a été joué (IA) on change de joueur.
 				switch(type){
 					case -1:
-						System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
-						decompte = lenteurAttente;
+						if (v.IJ.J.niveau.estTermine()){ //Pour vérifier qu'il ne reste pas que le morceau empoisoné pour l'humain, si c'est le cas, il a perdu
+							v.IJ.J.setEnCours(false) ; //Pourquoi pas : v.IJ.J.enCours =false directement ?
+							v.IJ.J.partieTerminee = true;
+							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant + 1 %2;
+						}else{
+							System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
+							decompte = lenteurAttente;
+						}
 						break;
 					case 0:
-						//System.out.println("Jouer l'ia facile");
 						IA_facile IA_facile = new IA_facile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-						if (IA_facile.jeu() == false){
+						if (IA_facile.jeu() == false){ //l'ia facile peut perdre alors qu'il lui reste des morceaux
 							v.IJ.J.setEnCours(false) ;
-							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
+							v.IJ.J.partieTerminee = true;
+							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
 						}
 						 else {
 							v.IJ.J.changeJoueur();
 						}
 						break;
-						
+
 					case 1:
 						IA_moyen IA_moy = new IA_moyen (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-						if (IA_moy.jeu() == false){
+						if (IA_moy.jeu() == false){ //elle renvoi false si elle mange l'empoisoné mais c'est seulement si c'est son dernier choix possible
 							v.IJ.J.setEnCours(false) ;
-							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
+							v.IJ.J.partieTerminee = true;
+							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
 						}
 						 else {
 							v.IJ.J.changeJoueur();
@@ -78,6 +85,8 @@ public class ControleurMediateur implements CollecteurEvenements {
 			} else {
 				decompte--;
 			}
+		}else{
+			v.IJ.J.partieTerminee = true;
 		}
 	}
 

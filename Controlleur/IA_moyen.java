@@ -34,9 +34,9 @@ class IA_moyen extends Joueur {
 				
 		}while (niveau.aMorceau(i+1,0) || niveau.aMorceau(0, i+1)); //si l'IA mange l'empoisonné alors 
 	
-		System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
-
+		
 		if (ok == 0){
+			System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
             return true;
         }
 		

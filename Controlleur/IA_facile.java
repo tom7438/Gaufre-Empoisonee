@@ -33,6 +33,10 @@ public class IA_facile extends Joueur {
 			System.out.println("L'IA_facile a joué le coup : (" + i + "," + j + ")");
             return true;
         }
+		else if(ok == 1 && (niveau.aMorceau(i+1,0) || niveau.aMorceau(0, i+1))){
+			System.out.println("L'IA facile a mangé la case (0,0) alors qu'il lui restait des possibilités");
+		}
+		
 
 		return false; //On a mangé le morceau empisonné
 

@@ -1,11 +1,9 @@
 package Modele;
 
-import Controlleur.*;
-import Vues.InterfaceJeu;
 
 public class Jeu {
 	public boolean enCours;
-	boolean partieTerminee;
+	public boolean partieTerminee;
 	public Niveau niveau;
 
 	// Partie joueurs
@@ -65,6 +63,8 @@ public class Jeu {
 
 		if (niveau.estTermine()) {
 			partieTerminee = true;
+			enCours = false;
+
 			joueurGagnant = joueurCourant;
 		} else {
 			changeJoueur();
@@ -84,7 +84,6 @@ public class Jeu {
 		System.out.println("ICIII");
 		if (this.enCours()) {
 			if (decompte == 0) {
-				int type = typeJoueur[joueurCourant];
 				// Lorsque le temps est écoulé on le transmet au joueur courant.
 				// Si un coup a été joué (IA) on change de joueur.
 				if (joueurs[joueurCourant].tempsEcoule()) {
