@@ -5,6 +5,7 @@ import Vues.CollecteurEvenements;
 
 public class ControleurMediateur implements CollecteurEvenements {
 	Jeu jeu;
+	int decompte;
 
 	public ControleurMediateur(Jeu j) {
 		jeu = j;
@@ -23,6 +24,38 @@ public class ControleurMediateur implements CollecteurEvenements {
 		System.out.println("Le joueur " + jeu.joueurCourant + " a perdu");
 		//
 
+	}
+
+	@Override
+	public void tictac() {
+		//System.out.println("ICCI");
+		if (jeu.enCours()) {
+			if (decompte == 0) {
+				int type = jeu.type_joueur(jeu.joueurCourant);
+				// Lorsque le temps est écoulé on le transmet au joueur courant.
+				// Si un coup a été joué (IA) on change de joueur.
+				switch(type){
+					case -1:
+						break;
+					case 0:
+						//System.out.println("Jouer l'ia facile");
+						IA_facile IA = new IA_facile (jeu.joueurs[jeu.joueurCourant], jeu.niveau);
+						IA.jeu();
+						jeu.changeJoueur();
+					default:
+						//TODO
+				}
+				// if (joueurs[joueurCourant][type].tempsEcoule()) {
+				// 	changeJoueur();
+				// } else {
+				// // Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
+				// 	System.out.println("On vous attend, joueur " + joueurs[joueurCourant][type].num());
+				// 	decompte = lenteurAttente;
+				// }
+			} else {
+				decompte--;
+			}
+		}
 	}
 
 

@@ -14,7 +14,13 @@ public class IA_facile extends Joueur {
 		r = new Random();
 	}
 
+    public IA_facile(Joueur joueur, Niveau niv) {
+		super(joueur.getPlayerName(), true, joueur.getDifficulteIA(), niv);
+		r = new Random();
+    }
+
     public boolean jeu(){
+		System.out.println("JE SUIS l'IA FACILE");
 		int i, j;
 		int ok;
 		do{

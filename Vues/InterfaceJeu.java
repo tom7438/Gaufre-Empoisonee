@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.Timer;
 
 public class InterfaceJeu extends InterfaceGraphique{
     Jeu J;
@@ -17,13 +18,15 @@ public class InterfaceJeu extends InterfaceGraphique{
     JPanel annulerRefairePanel;
     JPanel sauvegarderNouvellePartiePanel;
     JPanel quitterPanel;
+    CollecteurEvenements control;
 
-    public InterfaceJeu(Jeu j) {
+    public InterfaceJeu(Jeu j, CollecteurEvenements c) {
         this.J = j;
+        control = c;
     }
 
-    public static void demarrer(Jeu j) {
-        SwingUtilities.invokeLater(new InterfaceJeu(j));
+    public static void demarrer(Jeu j, CollecteurEvenements control) {
+        SwingUtilities.invokeLater(new InterfaceJeu(j, control));
     }
 
     @Override
@@ -141,6 +144,10 @@ public class InterfaceJeu extends InterfaceGraphique{
         jPanel2.add(currentPlayer, BorderLayout.CENTER);
 
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
+
+
+        Timer chrono = new Timer( 16, new AdaptateurTemps(control));
+		chrono.start();
 
         this.frame.setVisible(true);
     }

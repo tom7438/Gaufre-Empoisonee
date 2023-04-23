@@ -6,11 +6,13 @@ import java.awt.event.*;
 
 import javax.swing.JOptionPane;
 
+import Controlleur.ControleurMediateur;
 import Modele.Joueur;
 
 public class ClickListener implements ActionListener {
     InterfaceGraphique Graphique;
     int numeroInterface;
+
 
     public ClickListener(InterfaceGraphique G, int numInterface) {
         Graphique = G;
@@ -38,7 +40,9 @@ public class ClickListener implements ActionListener {
 
                     M.J.nouvellePartie(l, c, J1, J2);
                     M.fermer();
-                    InterfaceJeu.demarrer(M.J);
+                    CollecteurEvenements control = new ControleurMediateur(M.J);
+
+                    InterfaceJeu.demarrer(M.J, control);
                 }
             }
         } else if (numeroInterface == 1) {
@@ -66,6 +70,7 @@ public class ClickListener implements ActionListener {
                 IJ.J.setJoueurCourant(IJ.J.getJoueurPerdant());
                 // Rafraichir l'interface
                 IJ.rafraichir();
+
             } else if(e.getSource() == Graphique.sauvegarder) {
                 // TODO
             } else if(e.getSource() == Graphique.annuler) {

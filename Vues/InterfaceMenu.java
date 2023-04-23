@@ -1,6 +1,9 @@
 package Vues;
 
 import javax.swing.*;
+
+import Controlleur.IA_facile;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -169,6 +172,9 @@ public class InterfaceMenu extends InterfaceGraphique {
     // Permet de récupérer le Joueur/IA
     public Joueur getJ1() {
         if (T1.getText().compareTo("Nom du joueur 1") == 0) return null;
+        if (this.AI(1)){
+            return new IA_facile(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
+        }
         return new Joueur(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
     }
 

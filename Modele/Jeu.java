@@ -75,6 +75,7 @@ public class Jeu {
 	}
 
 	public void tictac() {
+		System.out.println("ICIII");
 		if (this.enCours()) {
 			if (decompte == 0) {
 				int type = typeJoueur[joueurCourant];
@@ -91,6 +92,10 @@ public class Jeu {
 				decompte--;
 			}
 		}
+	}
+
+	public int type_joueur(int num_j){
+		return joueurs[num_j].difficulteIA;
 	}
 
 	public Joueur getPlayer(int i) {
