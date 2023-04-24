@@ -19,6 +19,7 @@ public class InterfaceJeu extends InterfaceGraphique{
     JPanel sauvegarderNouvellePartiePanel;
     JPanel quitterPanel;
     CollecteurEvenements control;
+    Timer chrono;
 
     public InterfaceJeu(Jeu j, CollecteurEvenements c) {
         this.J = j;
@@ -74,7 +75,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         sauvegarder.addActionListener(click);
         nouvellePartie.addActionListener(click);
         menuPrincipal.addActionListener(click);
-        quitter.addActionListener(click);
+        //quitter.addActionListener(click);
 
         jPanel3.setLayout(new BorderLayout());
         gaufrePanel.setLayout(new BorderLayout());
@@ -115,6 +116,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         quitter.addMouseListener(new MouseInputAdapter() {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                chrono.stop();
                 fermer();
             }
         });
@@ -145,8 +147,7 @@ public class InterfaceJeu extends InterfaceGraphique{
 
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
 
-
-        Timer chrono = new Timer( 16, new AdaptateurTemps(control, vueGaufre));
+        chrono = new Timer( 100, new AdaptateurTemps(control, vueGaufre));
 		chrono.start();
 
         this.frame.setVisible(true);
@@ -188,4 +189,6 @@ public class InterfaceJeu extends InterfaceGraphique{
         jPanel2.add(currentPlayer, BorderLayout.CENTER);
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
     }
+
+
 }
