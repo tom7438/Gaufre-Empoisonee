@@ -12,16 +12,10 @@ public class GaufreListener extends MouseListener {
 
         System.out.println("Clic en (" + x + "," + y + ")");
 
-        if(v.G.coup(x, y)) {
-            if(v.G.partieTerminee()) {
-                v.IJ.currentPlayer.setText("Partie terminée! Gagnant: " + (v.G.joueurs[v.G.joueurCourant].getPlayerName()));
-            } else {
-                v.IJ.currentPlayer.setText("Le joueur " + (v.G.getPlayer(v.G.getPlayer()).getPlayerName()) + (v.G.getPlayer(v.G.getPlayer()).isAI() ? " (AI)" : "")  + " est en train de jouer");
-            }
-        } else {
+        if(!v.G.coup(x, y)) {
             v.IJ.currentPlayer.setText("Impossible de jouer le coup (?)");
         }
         //System.out.println(v.G.niveau.toString());
-        v.repaint();
+        //v.repaint();
     }
 }

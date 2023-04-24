@@ -42,7 +42,18 @@ public class AdaptateurTemps implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		control.tictac(v);
+		refresh(v);
+		
+
 		v.repaint();
 		//v.IJ.rafraichir();
+	}
+
+	public void refresh(VueGaufre v){
+		if(v.G.partieTerminee()) {
+			v.IJ.currentPlayer.setText("Partie terminée! Gagnant: " + (v.G.getPlayer(v.G.getPlayer()).getPlayerName()));
+		} else {
+			v.IJ.currentPlayer.setText("Le joueur " + (v.G.getPlayer(v.G.getPlayer()).getPlayerName()) + (v.G.getPlayer(v.G.getPlayer()).isAI() ? " (AI)" : "")  + " est en train de jouer");
+		}
 	}
 }

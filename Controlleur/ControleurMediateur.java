@@ -49,22 +49,34 @@ public class ControleurMediateur implements CollecteurEvenements {
 						}
 						break;
 					case 0:
+						if ((v.IJ.J.type_joueur(0) >= 0) && (v.IJ.J.type_joueur(1) >= 0)){
+						 	decompte = 100;
+						}
+							
 						//System.out.println("Jouer l'ia facile");
 						IA_facile IA_facile = new IA_facile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
 						if (!IA_facile.jeu()){
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
+							v.IJ.J.changeJoueur();
+
 						} else {
 							v.IJ.J.changeJoueur();
 						}
 						break;
 					case 1:
+						if ((v.IJ.J.type_joueur(0) >= 0) && (v.IJ.J.type_joueur(1) >= 0)){
+							decompte = 100;
+						}
 						IA_moyen IA_moy = new IA_moyen (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
 						if (!IA_moy.jeu()){
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
-							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
+							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) %2;
+							v.IJ.J.changeJoueur();
+
+						}
 						 else {
 							v.IJ.J.changeJoueur();
 						}

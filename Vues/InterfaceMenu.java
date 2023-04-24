@@ -169,21 +169,6 @@ public class InterfaceMenu extends InterfaceGraphique {
     // Permet de récupérer le Joueur/IA
     public Joueur getJ1() {
         if (T1.getText().compareTo("Nom du joueur 1") == 0) return null;
-        // if (this.AI(1)){
-        //     switch(this.getDifficult(1)){
-        //         case 1:
-        //             return new IA_facile(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
-
-        //         case 2:
-        //             return new IA_moyen(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
-
-        //         case 3:
-        //             //return new IA_difficile(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
-        //             System.out.println("TOODOO ajout difficulté");
-        //             break;
-
-        //     }
-        // }
         return new Joueur(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
     }
 
