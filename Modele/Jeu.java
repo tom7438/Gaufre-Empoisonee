@@ -1,7 +1,11 @@
 package Modele;
 
 
+import java.util.logging.Logger;
+
 public class Jeu {
+
+	Logger logger;
 	public boolean enCours;
 	public boolean partieTerminee;
 	public Niveau niveau;
@@ -23,6 +27,8 @@ public class Jeu {
 		enCours = true;
 
 		this.niveau= new Niveau(l, c);
+		logger = MyLogger.getLogger();
+		logger.info("nouvelle partie de taille " + l + " par " + c);
 		this.return_pile = new Pile(l*c);
 		this.avance_pile = new Pile(l*c);
 		joueurCourant = 0;

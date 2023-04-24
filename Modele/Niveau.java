@@ -25,7 +25,6 @@ public class Niveau {
         this.colonnes = colonnes;
 
         initContenu();
-        logger.info("nouvelle partie de taille " + lignes + " par " + colonnes);
     }
 
     public Niveau(Niveau n) {
