@@ -9,8 +9,9 @@ public class ControleurMediateur implements CollecteurEvenements {
     Jeu jeu;
     int decompte;
     final int lenteurAttente = 50;
-	final int attendre = 2; //nombres de secondes d'attente pour l'IA avant de jouer
+	final int attendre = 1; //nombres de secondes d'attente pour l'IA avant de jouer
 
+    public int numero_coup=1;
 
     public ControleurMediateur(Jeu j) {
         jeu = j;
@@ -72,7 +73,19 @@ public class ControleurMediateur implements CollecteurEvenements {
                                 setFinpartie(v, 0); //Valeur de joueur = 1 si le gagnant est le joueur suivant, 0 si c'est le joueur courant
 						}
 						break;
-                    // case 2:
+                    case 2:
+                        attends();
+                        IA_Difficile IA_diff = new IA_Difficile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
+                        if (!IA_diff.jeu()){ //cas ou on mange le morceau empoisonne donc joueur suivant gagnant
+                            setFinpartie(v, 1); //Valeur de joueur = 1 si le gagnant est le joueur suivant, 0 si c'est le joueur courant
+                        } 
+                        else{
+                            if(!v.IJ.J.niveau.estTermine())
+                                v.IJ.J.changeJoueur();
+                            else
+                                setFinpartie(v, 0);
+                        }
+                        break;
 					// 	//TODO IA diff
                     default:
                         //TODO

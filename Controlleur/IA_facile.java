@@ -19,6 +19,7 @@ public class IA_facile extends Joueur {
 		r = new Random();
     }
 
+	@Override
     public boolean jeu(){
 		int i, j;
 		int ok;
