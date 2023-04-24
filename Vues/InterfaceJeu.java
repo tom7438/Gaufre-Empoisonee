@@ -141,7 +141,7 @@ public class InterfaceJeu extends InterfaceGraphique{
         jPanel2.setLayout(new BorderLayout());
 
         currentPlayer.setHorizontalAlignment(SwingConstants.CENTER);
-        currentPlayer.setText("Le joueur " + J.getPlayer(J.getPlayer()).getPlayerName() + " joue");
+        currentPlayer.setText("Le joueur " + J.getPlayer(J.getPlayer()).getPlayerName() + " commence !");
 
         jPanel2.add(currentPlayer, BorderLayout.CENTER);
 
