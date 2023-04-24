@@ -112,8 +112,6 @@ public class Niveau implements Cloneable{
         return true;
     }
 
-
-
     public boolean aMorceau(int ligne, int colonne) {
         if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
@@ -174,22 +172,16 @@ public class Niveau implements Cloneable{
 
 
     public int jouer(int caseChoisieL, int caseChoisieC) {
-        logger.info("coup en " + caseChoisieL + "," + caseChoisieC);
         if(this.aMorceau(caseChoisieL, caseChoisieC)) {
+            logger.info("coup en " + caseChoisieL + "," + caseChoisieC);
             this.effacerRectangle(caseChoisieL, caseChoisieC);
             return 0;
         } else if(this.aMorceauEmpoisonne(caseChoisieL, caseChoisieC)) {
             System.out.println("Vous avez mangé le morceau empoisonné");
-            // System.out.println("Vous avez perdu");
-            // System.out.println("Fin du jeu");
-            // System.out.println("Merci d'avoir joué connard");
-
             return 1;
         } else {
-            //System.out.println("Il n'y a pas de morceau à cette case");
+            //Il n'y a pas de morceau à cette case;
             return 2;
         }
     }
-
-
 }

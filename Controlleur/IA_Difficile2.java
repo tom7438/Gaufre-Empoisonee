@@ -6,7 +6,6 @@ public class IA_Difficile2 extends Joueur{
 
     IA_Difficile2(int n, Niveau p) {
         super(n, p);
-        //TODO Auto-generated constructor stub
     }
 
     @Override

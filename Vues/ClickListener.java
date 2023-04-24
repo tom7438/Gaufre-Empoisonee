@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import Controlleur.ControleurMediateur;
 import Modele.Jeu;
 import Modele.Joueur;
+import Modele.Niveau;
 
 public class ClickListener implements ActionListener {
     InterfaceGraphique Graphique;
@@ -75,19 +76,23 @@ public class ClickListener implements ActionListener {
             } else if(e.getSource() == Graphique.sauvegarder) {
                 // TODO
             } else if(e.getSource() == Graphique.annuler) {
-                System.out.println("J'ai cliqué sur annulé");
                 //On dépile le niveau au sommet de la pile
-                
                 if (IJ.J.return_pile.estVide())
                     System.out.println("Aucun coup a annuler");
                 else{
                     IJ.J.reset_Niveau();
+                    IJ.J.retour = true;
+                    //Niveau na = (IJ.J.reset_Niveau());
+                    //IJ.J.avance_pile.empiler(na);
                     IJ.rafraichir_niveau();
                 }
-                // TODO
             } else if(e.getSource() == Graphique.refaire) {
-                //    IJ.J.avance_Niveau();
-                   // IJ.rafraichir();
+                if (IJ.J.avance_pile.estVide())
+                    System.out.println("Aucun coup a refaire");
+                else{
+                    //TODO Fonctionne pas
+                    //IJ.J.avance_Niveau();
+                }
             }
         }
         if (e.getSource() == Graphique.quitter) {

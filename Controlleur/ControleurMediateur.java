@@ -4,7 +4,6 @@ import Modele.Jeu;
 import Vues.CollecteurEvenements;
 import Vues.VueGaufre;
 
-import static Modele.Niveau.MORCEAU_EMPOISONNE;
 
 public class ControleurMediateur implements CollecteurEvenements {
     Jeu jeu;
@@ -15,19 +14,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 
     public ControleurMediateur(Jeu j) {
         jeu = j;
-
-        // while(!jeu.niveau.estTermine()){
-		// 	System.out.println("Plateau :\n" + jeu.niveau.toString());
-
-
-		// 	System.out.println("C'est au tour du joueur " + jeu.joueurCourant);
-		// 	//if (jeu.joueurs[jeu.joueurCourant].jeu())//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
-		// 		//jeu.changeJoueur();
-        // }
-
-        // System.out.println("Le joueur " + jeu.joueurCourant + " a perdu");
-        // //
-
     }
 
 	public void attends(){
@@ -38,82 +24,52 @@ public class ControleurMediateur implements CollecteurEvenements {
 		}
 	}
 
+    private void setFinpartie(VueGaufre v, int joueur){
+        v.IJ.J.setEnCours(false) ;
+		v.IJ.J.partieTerminee = true;
+        v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +joueur) % 2;
+    }
+
 	@Override
 	public void tictac(VueGaufre v) {
-		//System.out.println("ICCI");
-
-
 		if (v.IJ.J.enCours && !v.IJ.J.partieTerminee){
-			//System.out.println("En cours : "+v.IJ.J.enCours+" partie terminee : "+v.IJ.J.partieTerminee);
-			int i=0;
-            // on regarde l'interieur de la pile
-            // v.IJ.J.return_pile.empiler(v.IJ.J.niveau);
-            // if (v.IJ.J.return_pile.taille() != 0){
-            //     while (i!=v.IJ.J.return_pile.taille()-1){
-
-            //        v.IJ.J.return_pile.getNiveau(i).toString();
-            //        i++;
-            //     }
-            // }
-
 			if (decompte == 0) {
 				int type = v.IJ.J.type_joueur(v.IJ.J.joueurCourant);
-				// Lorsque le temps est écoulé on le transmet au joueur courant.
-				// Si un coup a été joué (IA) on change de joueur.
+
 				switch(type){
 					case -1:
 						if (v.IJ.J.niveau.estTermine()){ //Pour vérifier qu'il ne reste pas que le morceau empoisoné pour l'humain, si c'est le cas, il a perdu
-							v.IJ.J.setEnCours(false) ; //Pourquoi pas : v.IJ.J.enCours =false directement ?
-							v.IJ.J.partieTerminee = true;
-							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant + 1) %2;
+                            setFinpartie(v, 1); //Valeur de joueur = 1 si le gagnant est le joueur suivant, 0 si c'est le joueur courant
 						}else{
-                            System.out.println("Niveau courant \n" + v.IJ.J.niveau.toString());
-
-
+                            //System.out.println("Niveau courant \n" + v.IJ.J.niveau.toString()); //Affichage pour montrez le fonctionnement de annulé coup.
 							System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
 							decompte = lenteurAttente;
 						}
 						break;
 					case 0:
 						attends();
-						//System.out.println("Jouer l'ia facile");
 						IA_facile IA_facile = new IA_facile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
 						if (!IA_facile.jeu()){ //cas ou on mange le morceau empoisonne donc joueur suivant gagnant
-							v.IJ.J.setEnCours(false) ;
-							v.IJ.J.partieTerminee = true;
-							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
-
-						} else {
-							if(!v.IJ.J.niveau.estTermine()) {
+                            setFinpartie(v, 1); //Valeur de joueur = 1 si le gagnant est le joueur suivant, 0 si c'est le joueur courant
+						} 
+                        else{
+							if(!v.IJ.J.niveau.estTermine())
 								v.IJ.J.changeJoueur();
-							}
-							else{
-								v.IJ.J.partieTerminee = true;
-								v.IJ.J.setEnCours(false) ;
-								v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
-							}
+							else
+                                setFinpartie(v, 0);
 						}
 						break;
 					case 1:
 						attends();
 
 						IA_moyen IA_moy = new IA_moyen (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-						if (!IA_moy.jeu()){	//cas ou on mange le morceau empoisonne donc joueur suivant gagnant
-
-							v.IJ.J.setEnCours(false) ;
-							v.IJ.J.partieTerminee = true;
-							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) %2;
-
-						}
-						 else {
+						if (!IA_moy.jeu())	//cas ou on mange le morceau empoisonne donc joueur suivant gagnant
+                            setFinpartie(v, 1); //Valeur de joueur = 1 si le gagnant est le joueur suivant, 0 si c'est le joueur courant
+						else {
 							if(!v.IJ.J.niveau.estTermine()) {
 								v.IJ.J.changeJoueur();
-							}else{
-								//System.out.println("ICIIII");
-								v.IJ.J.partieTerminee = true;
-								v.IJ.J.setEnCours(false) ;
-								v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
-							}
+							}else
+                                setFinpartie(v, 0); //Valeur de joueur = 1 si le gagnant est le joueur suivant, 0 si c'est le joueur courant
 						}
 						break;
                     // case 2:
@@ -121,8 +77,6 @@ public class ControleurMediateur implements CollecteurEvenements {
                     default:
                         //TODO
                 }
-                //v.repaint();
-                //System.out.println("Le joueur " + jeu.joueurCourant);
             } else {
                 decompte--;
             }
@@ -130,113 +84,4 @@ public class ControleurMediateur implements CollecteurEvenements {
             v.IJ.J.partieTerminee = true;
         }
     }
-
-
-
-// @Override
-    // public void tictac(VueGaufre v) {
-    //     //System.out.println("ICCI");
-    //     boolean changer = false;
-
-    //     if (v.IJ.J.enCours && !v.IJ.J.partieTerminee) {
-    //         changer = false;
-    //         //System.out.println("En cours : "+v.IJ.J.enCours+" partie terminee : "+v.IJ.J.partieTerminee);
-    //         if (decompte == 0) {
-    //             int type = v.IJ.J.type_joueur(v.IJ.J.joueurCourant);
-    //             // Lorsque le temps est écoulé on le transmet au joueur courant.
-    //             // Si un coup a été joué (IA) on change de joueur.
-    //             switch (type) {
-    //                 case -1:
-    //                     if (v.IJ.J.niveau.estTermine()) { //Pour vérifier qu'il ne reste pas que le morceau empoisoné pour l'humain, si c'est le cas, il a perdu
-    //                         v.IJ.J.setEnCours(false); //Pourquoi pas : v.IJ.J.enCours =false directement ?
-    //                         v.IJ.J.partieTerminee = true;
-    //                         v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
-    //                     } else {
-    //                         System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
-    //                         decompte = lenteurAttente;
-    //                     }
-    //                     break;
-    //                 case 0:
-    //                     //System.out.println("Jouer l'ia facile");
-    //                     IA_facile IA_facile = new IA_facile(v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-    //                     if (!IA_facile.jeu()) {
-    //                         v.IJ.J.setEnCours(false);
-    //                         v.IJ.J.partieTerminee = true;
-    //                         v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
-    //                     } else {
-    //                         if(!v.IJ.J.niveau.estTermine()) {
-    //                             v.IJ.J.changeJoueur();
-    //                             changer = true;
-    //                         }
-    //                         //decompte = lenteurAttente;
-    //                     }
-    //                     if (v.IJ.J.niveau.estTermine()) {
-    //                         v.IJ.J.partieTerminee = true;
-    //                         if(v.IJ.J.niveau.contenu[0][0] != MORCEAU_EMPOISONNE) {
-    //                             v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant + 1) % 2;
-    //                         } else {
-    //                             v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
-    //                         }
-    //                         v.IJ.currentPlayer.setText("Partie terminée! Gagnant: " + (v.G.joueurs[v.G.joueurGagnant].getPlayerName()));
-    //                     } else {
-    //                         if(!v.IJ.J.partieTerminee){
-    //                             if(!changer)
-    //                                 v.IJ.J.changeJoueur();
-    //                             v.IJ.currentPlayer.setText("Le joueur " + (v.G.getPlayer(v.G.getPlayer()).getPlayerName()) + (v.G.getPlayer(v.G.getPlayer()).isAI() ? " (AI)" : "") + " est en train de jouer");
-    //                         }
-    //                     }
-    //                     v.repaint();
-    //                     break;
-    //                 case 1:
-    //                     IA_moyen IA_moy = new IA_moyen(v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-    //                     if (!IA_moy.jeu()) {
-    //                         v.IJ.J.setEnCours(false);
-    //                         v.IJ.J.partieTerminee = true;
-    //                         v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
-    //                     } else {
-    //                         v.IJ.J.changeJoueur();
-    //                     }
-    //                     break;
-	// case 2:
-	// 				// 	//TODO IA diff
-    //                 default:
-    //                     //TODO
-    //             }
-    //             //v.repaint();
-
-    //             //System.out.println("Le joueur " + jeu.joueurCourant);
-
-
-    //         } else {
-    //             decompte--;
-    //         }
-    //     } else {
-    //         v.IJ.J.partieTerminee = true;
-    //     }
-    // }
-
-
-
-
-
-    // @Override
-    // public void clicSouris(int l, int c) {
-	// 	// Lors d'un clic, on le transmet au joueur courant.
-	// 	// Si un coup a effectivement été joué (humain, coup valide), on change de joueur.
-	// 	if (joueurs[joueurCourant][typeJoueur[joueurCourant]].jeu(l, c))
-	// 		changeJoueur();
-    // }
-
-
-    // @Override
-    // public void changeJoueur(int j, int t) {
-	// 	System.out.println("Nouveau type " + t + " pour le joueur " + j);
-	// 	typeJoueur[j] = t;
-    // }
-
-    // @Override
-    // public void changeTaille(int t) {
-	// 	System.out.println("Nouvelle taille " + t);
-	// 	jeu.reset(t);
-    // }
 }

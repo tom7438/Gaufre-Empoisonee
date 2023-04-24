@@ -31,7 +31,7 @@ class IA_moyen extends Joueur {
 			ok = niveau.jouer(i, j);
 		}while	(ok == 2);
 
-		System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
+		//System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
 		
 		if (ok == 0){
             return true;

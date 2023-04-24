@@ -28,7 +28,7 @@ public class IA_facile extends Joueur {
 			ok = niveau.jouer(i, j);
 		}while(ok == 2); //pas de morceau sur cette case
 
-		System.out.println("L'IA_facile a joué le coup : (" + i + "," + j + ")");
+		//System.out.println("L'IA_facile a joué le coup : (" + i + "," + j + ")");
 		
 		if (ok == 0){
             return true;
