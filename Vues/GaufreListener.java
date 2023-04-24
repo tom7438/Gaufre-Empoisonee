@@ -7,6 +7,8 @@ public class GaufreListener extends MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         VueGaufre v = (VueGaufre) e.getComponent();
+        // Si c'est le tour de l'IA on ne fait rien
+        // TODO
         int y = e.getX() / v.largeurCase;
         int x = e.getY() / v.hauteurCase;
 

@@ -42,17 +42,16 @@ public class ControleurMediateur implements CollecteurEvenements {
 	@Override
 	public void tictac(VueGaufre v) {
 		//System.out.println("ICCI");
-		
+
 		if (v.IJ.J.enCours && !v.IJ.J.partieTerminee){
 			//System.out.println("En cours : "+v.IJ.J.enCours+" partie terminee : "+v.IJ.J.partieTerminee);
-			
+
 			if (decompte == 0) {
 				int type = v.IJ.J.type_joueur(v.IJ.J.joueurCourant);
 				// Lorsque le temps est écoulé on le transmet au joueur courant.
 				// Si un coup a été joué (IA) on change de joueur.
 				switch(type){
 					case -1:
-
 						if (v.IJ.J.niveau.estTermine()){ //Pour vérifier qu'il ne reste pas que le morceau empoisoné pour l'humain, si c'est le cas, il a perdu
 							v.IJ.J.setEnCours(false) ; //Pourquoi pas : v.IJ.J.enCours =false directement ?
 							v.IJ.J.partieTerminee = true;
@@ -64,7 +63,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 						}
 						break;
 					case 0:
-							
 						attends();
 						//System.out.println("Jouer l'ia facile");
 						IA_facile IA_facile = new IA_facile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
@@ -91,7 +89,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 
 						IA_moyen IA_moy = new IA_moyen (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
 						if (!IA_moy.jeu()){	//cas ou on mange le morceau empoisonne donc joueur suivant gagnant
-							
+
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) %2;
@@ -116,10 +114,7 @@ public class ControleurMediateur implements CollecteurEvenements {
                         //TODO
                 }
                 //v.repaint();
-
                 //System.out.println("Le joueur " + jeu.joueurCourant);
-
-
             } else {
                 decompte--;
             }
