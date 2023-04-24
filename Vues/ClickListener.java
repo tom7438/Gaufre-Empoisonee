@@ -44,7 +44,7 @@ public class ClickListener implements ActionListener {
                     M.fermer();
                     CollecteurEvenements control = new ControleurMediateur(M.J);
 
-                    InterfaceJeu.demarrer(M.J, control);
+                    InterfaceJeu.demarrer(M.J, control, M);
                 }
             }
         } else if (numeroInterface == 1) {
@@ -52,9 +52,9 @@ public class ClickListener implements ActionListener {
             if (e.getSource() == Graphique.charger) {
                 // TODO
             } else if (e.getSource() == Graphique.menuPrincipal) {
-                Jeu j = new Jeu();
                 IJ.fermer();
-                InterfaceMenu.demarrer(j);
+                // Ouvrir l'interface de menu principale
+                IJ.menu.frame.setVisible(true);
             } else if(e.getSource() == Graphique.nouvellePartie) {
                 // Incrémenter le score
                 if(IJ.J.partieTerminee())

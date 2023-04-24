@@ -20,14 +20,18 @@ public class InterfaceJeu extends InterfaceGraphique{
     JPanel quitterPanel;
     CollecteurEvenements control;
     Timer chrono;
+    InterfaceMenu menu;
 
-    public InterfaceJeu(Jeu j, CollecteurEvenements c) {
+    public InterfaceJeu(Jeu j, CollecteurEvenements c, InterfaceMenu m) {
         this.J = j;
         control = c;
+        menu = m;
+        
+
     }
 
-    public static void demarrer(Jeu j, CollecteurEvenements control) {
-        SwingUtilities.invokeLater(new InterfaceJeu(j, control));
+    public static void demarrer(Jeu j, CollecteurEvenements control, InterfaceMenu m) {
+        SwingUtilities.invokeLater(new InterfaceJeu(j, control, m));
     }
 
     @Override
