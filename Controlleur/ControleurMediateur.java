@@ -44,7 +44,9 @@ public class ControleurMediateur implements CollecteurEvenements {
 					case 3:
 						joueurs[i] = new IA_Difficile(3, j.niveau);
 						break;
-
+					case 4:
+						joueurs[i] = new IA_Difficile2(4, j.niveau);
+						break;
 				}
 			}
 		}
@@ -63,7 +65,11 @@ public class ControleurMediateur implements CollecteurEvenements {
 
 		while(!jeu.niveau.estTermine()){
 			System.out.println("Plateau :\n" + jeu.niveau.toString());
-			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
 
 			System.out.println("C'est au tour du joueur " + joueurCourant);
 			if (joueurs[joueurCourant].jeu(numero_coup)){//ICI donnez 2 arguments a jeu pour pouvoir récupérer lignes et colonnes avec clicsouris
@@ -120,10 +126,10 @@ public class ControleurMediateur implements CollecteurEvenements {
 		Scanner s = new Scanner(System.in);
 		int type;
 		do{
-		System.out.println("Entrez le niveau de l'IA \n 1 = Facile || 2 = Moyen || 3 = Difficile");
+		System.out.println("Entrez le niveau de l'IA \n 1 = Facile || 2 = Moyen || 3 = Difficile || 4 = Tres Difficile");
 		type = s.nextInt();
 		}
-		while(type < 0 || type > 3);
+		while(type < 0 || type > 4);
 		return type;
 	}
 
@@ -156,7 +162,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 					changeJoueur();
 				} else {
 				// Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
-					System.out.println("On vous attend, joueur " + joueurs[joueurCourant].num());
+					System.out.println("On vous attend, joueur " + joueurs[joueurCourant].type);
 					decompte = lenteurAttente;
 				}
 			} else {

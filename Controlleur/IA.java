@@ -14,7 +14,7 @@ class IA extends Joueur {
 	}
 
 	@Override
-    boolean jeu(){  
+    boolean jeu(int num){
 		int i, j;
 		int ok;
 		do{
@@ -32,11 +32,7 @@ class IA extends Joueur {
 		System.out.println("L'IA a joué le coup : (" + i + "," + j + ")");
 		System.out.println("ICIIIII " + i + "," + j);
 
-		if (ok == 0){
-            return true;
-        }
-		
-		return false;
+		return ok == 0;
 
 	}
 
