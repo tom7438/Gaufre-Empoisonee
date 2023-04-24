@@ -157,7 +157,9 @@ public class Niveau {
             this.effacerRectangle(caseChoisieL, caseChoisieC);
             return 0;
         } else if(this.aMorceauEmpoisonne(caseChoisieL, caseChoisieC)) {
-            System.out.println("Vous avez mangé le morceau empoisonné");
+            if (!this.aMorceau(1,0) && !this.aMorceau(0, 1)){
+                System.out.println("Vous avez mangé le morceau empoisonné");
+            }
             // System.out.println("Vous avez perdu");
             // System.out.println("Fin du jeu");
             // System.out.println("Merci d'avoir joué connard");

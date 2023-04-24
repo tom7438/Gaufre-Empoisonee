@@ -36,13 +36,13 @@ public class AdaptateurTemps implements ActionListener {
 
 	AdaptateurTemps(CollecteurEvenements c, VueGaufre vueGaufre) {
 		control = c;
-		v = vueGaufre;
-		
+		v = vueGaufre;	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		control.tictac(v);
 		v.repaint();
+		//v.IJ.rafraichir();
 	}
 }

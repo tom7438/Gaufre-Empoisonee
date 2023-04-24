@@ -2,12 +2,9 @@ package Vues;
 
 import javax.swing.*;
 
-import Controlleur.IA_facile;
+
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import Modele.*;
 
 public class InterfaceMenu extends InterfaceGraphique {
@@ -172,14 +169,29 @@ public class InterfaceMenu extends InterfaceGraphique {
     // Permet de récupérer le Joueur/IA
     public Joueur getJ1() {
         if (T1.getText().compareTo("Nom du joueur 1") == 0) return null;
-        if (this.AI(1)){
-            return new IA_facile(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
-        }
+        // if (this.AI(1)){
+        //     switch(this.getDifficult(1)){
+        //         case 1:
+        //             return new IA_facile(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
+
+        //         case 2:
+        //             return new IA_moyen(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
+
+        //         case 3:
+        //             //return new IA_difficile(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
+        //             System.out.println("TOODOO ajout difficulté");
+        //             break;
+
+        //     }
+        // }
         return new Joueur(T1.getText(), this.AI(1), this.getDifficult(1), J.niveau);
     }
 
     public Joueur getJ2() {
         if (T2.getText().compareTo("Nom du joueur 2") == 0) return null;
+        // if (this.AI(2)){
+        //     return new IA_facile(T1.getText(), this.AI(2), this.getDifficult(2), J.niveau);
+        // }
         return new Joueur(T2.getText(), this.AI(2), this.getDifficult(2), J.niveau);
     }
 
