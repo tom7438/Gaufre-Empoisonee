@@ -77,14 +77,17 @@ public class Jeu {
 		if (!niveau.aMorceau(l, c)) {
 			return false;
 		}
-
-		niveau.effacerRectangle(l, c);
-
+		
 		// On empile le niveau actuelle dans la pile retour
-		Niveau n2 = niveau.clone();
+		Niveau n2 = new Niveau(niveau);
+		System.out.println("Nombres d'element dans la pile : " + return_pile.taille() + "\n Ajoute ce niveau a la pile \n " + n2.toString());
 		this.return_pile.empiler(n2);
 		// On vide la pile avance
 		this.avance_pile.vider(); 
+
+		//on joue le coup et efface les cases du niveau courant
+		niveau.effacerRectangle(l, c);
+
 		
 		if (niveau.estTermine()) {
 			partieTerminee = true;
@@ -149,19 +152,13 @@ public class Jeu {
 	public void reset_Niveau (){
 		//on depile le niveau actuelle
 		System.out.println("Tentative d'annulation de niveau");
+
 		Niveau n3 = this.return_pile.depiler();
-		//Si la pile est vide on remet le niveau initial
-		if (this.return_pile.estVide()){
-			this.niveau = new Niveau(n3.getLigne(), n3.getColonne());
-			this.joueurCourant = (this.joueurCourant + 1) % 2;
-		}
-		else{
-		//on charge le niveau precedent
-		this.niveau = this.return_pile.sommet();
-		//on empile le niveau depile dans la pile avance
-		this.avance_pile.empiler(n3);
+		
 		this.joueurCourant = (this.joueurCourant + 1) % 2;
-		}
+		this.niveau = n3;
+		this.avance_pile.empiler(n3);
+
 	}
 	
 	public void avance_Niveau(){

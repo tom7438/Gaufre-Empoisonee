@@ -79,11 +79,10 @@ public class ClickListener implements ActionListener {
                 //On dépile le niveau au sommet de la pile
                 
                 if (IJ.J.return_pile.estVide())
-                    System.out.println("La pile est vide");
+                    System.out.println("Aucun coup a annuler");
                 else{
                     IJ.J.reset_Niveau();
-                    //On rafraichit l'interface
-                    IJ.rafraichir();
+                    IJ.rafraichir_niveau();
                 }
                 // TODO
             } else if(e.getSource() == Graphique.refaire) {

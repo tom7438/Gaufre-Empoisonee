@@ -67,6 +67,9 @@ public class ControleurMediateur implements CollecteurEvenements {
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant + 1) %2;
 						}else{
+                            System.out.println("Niveau courant \n" + v.IJ.J.niveau.toString());
+
+
 							System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
 							decompte = lenteurAttente;
 						}

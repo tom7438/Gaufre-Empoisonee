@@ -147,7 +147,7 @@ public class InterfaceJeu extends InterfaceGraphique{
 
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
 
-        chrono = new Timer( 100, new AdaptateurTemps(control, vueGaufre));
+        chrono = new Timer( 50, new AdaptateurTemps(control, vueGaufre));
 		chrono.start();
 
         this.frame.setVisible(true);
@@ -204,6 +204,48 @@ public class InterfaceJeu extends InterfaceGraphique{
         jPanel2.removeAll();
         currentPlayer.removeAll();
         currentPlayer.setText("Le joueur " + J.getPlayer(J.getPlayer()).getPlayerName() + (J.getPlayer(J.getPlayer()).isAI() ? " (AI)" : "") + " commence !");
+        jPanel2.add(currentPlayer, BorderLayout.CENTER);
+        this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
+    }
+
+
+    public void rafraichir_niveau(){
+        // Mettre à jour le plateau de jeu
+        this.frame.getContentPane().removeAll();
+        VueGaufre vueGaufre = new VueGaufre(J, this);
+        vueGaufre.addMouseListener(new GaufreListener());
+        gaufrePanel.add(vueGaufre);
+        jPanel3.add(gaufrePanel, BorderLayout.CENTER);
+
+        ClickListener click = new ClickListener(this, 1);
+
+        // Ajout des listeners
+        charger.addActionListener(click);
+        annuler.addActionListener(click);
+        refaire.addActionListener(click);
+        sauvegarder.addActionListener(click);
+        nouvellePartie.addActionListener(click);
+        menuPrincipal.addActionListener(click);
+
+        quitter.addMouseListener(new MouseInputAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                chrono.stop();
+                fermer();
+            }
+        });
+
+        // Vider le panel de controle pour remettre le score à jour
+        controlsPanel.removeAll();
+
+        controlsPanel.add(score);
+        controlsPanel.add(annulerRefairePanel);
+        controlsPanel.add(sauvegarderNouvellePartiePanel);
+        controlsPanel.add(quitterPanel);
+
+        jPanel3.add(controlsPanel, BorderLayout.EAST);
+        this.frame.getContentPane().add(jPanel3, BorderLayout.CENTER);
+
         jPanel2.add(currentPlayer, BorderLayout.CENTER);
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
     }

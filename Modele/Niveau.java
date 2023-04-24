@@ -2,7 +2,7 @@ package Modele;
 
 import java.util.logging.Logger;
 
-public class Niveau {
+public class Niveau implements Cloneable{
     public static final int VIDE = 0;
     public static final int MORCEAU = 1;
     public static final int MORCEAU_EMPOISONNE = -1;
@@ -171,6 +171,7 @@ public class Niveau {
         }
         return n;
     }
+
 
     public int jouer(int caseChoisieL, int caseChoisieC) {
         logger.info("coup en " + caseChoisieL + "," + caseChoisieC);
