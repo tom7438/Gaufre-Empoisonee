@@ -51,8 +51,8 @@ public class ClickListener implements ActionListener {
             if (e.getSource() == Graphique.charger) {
                 // TODO
             } else if (e.getSource() == Graphique.menuPrincipal) {
-                IJ.fermer();
                 Jeu j = new Jeu();
+                IJ.fermer();
                 InterfaceMenu.demarrer(j);
             } else if(e.getSource() == Graphique.nouvellePartie) {
                 // Incrémenter le score
@@ -67,11 +67,11 @@ public class ClickListener implements ActionListener {
 
                 // Lancer une nouvelle partie
                 IJ.J.setPartieTerminee();
-                IJ.J.nouvellePartie(IJ.J.niveau.getLigne(), IJ.J.niveau.getColonne(), IJ.J.getPlayer(0), IJ.J.getPlayer(2));
+                IJ.J.nouvellePartie(IJ.J.niveau.getLigne(), IJ.J.niveau.getColonne(), IJ.J.getPlayer(0), IJ.J.getPlayer(1));
                 IJ.J.setJoueurCourant(IJ.J.getJoueurPerdant());
+                IJ.currentPlayer.setText("Le joueur " + IJ.J.getPlayer(IJ.J.getPlayer()).getPlayerName() + " commence !");
                 // Rafraichir l'interface
                 IJ.rafraichir();
-
             } else if(e.getSource() == Graphique.sauvegarder) {
                 // TODO
             } else if(e.getSource() == Graphique.annuler) {
