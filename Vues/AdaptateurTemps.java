@@ -50,10 +50,11 @@ public class AdaptateurTemps implements ActionListener {
 	}
 
 	public void refresh(VueGaufre v){
-		if(v.G.partieTerminee()) {
-			v.IJ.currentPlayer.setText("Partie terminée! Gagnant: " + (v.G.getPlayer(v.G.getPlayer()).getPlayerName()));
+		if(v.IJ.J.partieTerminee()) {
+			//System.out.println("Partie fini et gagnant : " + v.IJ.J.joueurGagnant);
+			v.IJ.currentPlayer.setText("Partie terminée! Gagnant: " + (v.IJ.J.getPlayer(v.IJ.J.joueurGagnant).getPlayerName()));
 		} else {
-			v.IJ.currentPlayer.setText("Le joueur " + (v.G.getPlayer(v.G.getPlayer()).getPlayerName()) + (v.G.getPlayer(v.G.getPlayer()).isAI() ? " (AI)" : "")  + " est en train de jouer");
+			v.IJ.currentPlayer.setText("Le joueur " + (v.IJ.J.getPlayer(v.IJ.J.getPlayer()).getPlayerName()) + (v.IJ.J.getPlayer(v.IJ.J.getPlayer()).isAI() ? " (AI)" : "")  + " est en train de jouer");
 		}
 	}
 }

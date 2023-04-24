@@ -22,21 +22,18 @@ class IA_moyen extends Joueur {
     public boolean jeu(){
 		int i, j;
 		int ok;
-		do{
+		do{	
 			do{
 				i = r.nextInt(this.niveau.getLigne());
 				j = r.nextInt(niveau.getColonne());
-				ok = niveau.jouer(i, j);
-			}while(ok == 2); //pas de morceau sur cette case
 
-			if(i != 0 || j != 0 ) 
-				break;//Sinon on boucle jusqu'a avoir un endroit non empoisonné
-				
-		}while (niveau.aMorceau(i+1,0) || niveau.aMorceau(0, i+1)); //si l'IA mange l'empoisonné alors 
-	
+			}while(i == 0 && j ==0); //pas de morceau sur cette case
+			ok = niveau.jouer(i, j);
+		}while	(ok == 2);
+
+		System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
 		
 		if (ok == 0){
-			System.out.println("L'IA_moyen a joué le coup : (" + i + "," + j + ")");
             return true;
         }
 		
