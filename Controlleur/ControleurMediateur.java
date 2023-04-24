@@ -49,24 +49,22 @@ public class ControleurMediateur implements CollecteurEvenements {
 						}
 						break;
 					case 0:
+						//System.out.println("Jouer l'ia facile");
 						IA_facile IA_facile = new IA_facile (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-						if (IA_facile.jeu() == false){ //l'ia facile peut perdre alors qu'il lui reste des morceaux
+						if (!IA_facile.jeu()){
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
-						}
-						 else {
+						} else {
 							v.IJ.J.changeJoueur();
 						}
 						break;
-
 					case 1:
 						IA_moyen IA_moy = new IA_moyen (v.IJ.J.joueurs[v.IJ.J.joueurCourant], v.IJ.J.niveau);
-						if (IA_moy.jeu() == false){ //elle renvoi false si elle mange l'empoisoné mais c'est seulement si c'est son dernier choix possible
+						if (!IA_moy.jeu()){
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
-							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
-						}
+							v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
 						 else {
 							v.IJ.J.changeJoueur();
 						}
