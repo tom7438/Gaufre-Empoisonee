@@ -23,6 +23,10 @@ public class Jeu {
 		joueurCourant = 0;
 	}
 
+	public Jeu() {
+		nouvellePartie();
+	}
+
 	/**
 	 * Crée une nouvelle partie de taille par défaut
 	 */
