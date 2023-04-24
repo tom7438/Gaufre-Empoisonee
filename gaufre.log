@@ -1,92 +1,260 @@
-avr. 21, 2023 10:52:48 PM Gaufre main
+avr. 24, 2023 12:39:03 PM Gaufre main
 INFOS: Nouvelle partie
-avr. 21, 2023 10:52:53 PM Modele.Niveau <init>
-INFOS: nouvelle partie de taille 10 par 10
-avr. 21, 2023 10:52:57 PM Modele.Niveau jouer
-INFOS: coup en 9,9
-avr. 21, 2023 10:52:57 PM Modele.Niveau <init>
-INFOS: nouvelle partie de taille 10 par 10
-avr. 21, 2023 10:52:57 PM Modele.Niveau <init>
-INFOS: nouvelle partie de taille 10 par 10
-avr. 21, 2023 10:52:59 PM Modele.Niveau <init>
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:23:30 PM java.util.logging.LogManager$RootLogger log
+avr. 24, 2023 12:39:08 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:12 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:12 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:29 PM Gaufre main
 INFOS: Nouvelle partie
-avr. 23, 2023 6:23:41 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:23:49 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 9,9
-avr. 23, 2023 6:23:52 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 8,8
-avr. 23, 2023 6:23:56 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 7,7
-avr. 23, 2023 6:34:26 PM java.util.logging.LogManager$RootLogger log
+avr. 24, 2023 12:39:34 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:35 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:35 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:36 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:39:42 PM Gaufre main
 INFOS: Nouvelle partie
-avr. 23, 2023 6:34:29 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:35:45 PM java.util.logging.LogManager$RootLogger log
+avr. 24, 2023 12:39:55 PM Gaufre main
 INFOS: Nouvelle partie
-avr. 23, 2023 6:35:48 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:35:58 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 9,9
-avr. 23, 2023 6:35:58 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:35:58 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:36:04 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 8,8
-avr. 23, 2023 6:36:04 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:36:04 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:36:19 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 7,7
-avr. 23, 2023 6:36:19 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:36:19 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:36:22 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:36:30 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 7,7
-avr. 23, 2023 6:37:16 PM java.util.logging.LogManager$RootLogger log
+avr. 24, 2023 12:40:01 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:03 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:03 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:06 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:24 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:24 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:29 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:31 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:31 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:34 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:35 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:35 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:38 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:54 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:54 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:40:58 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:00 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:00 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:03 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:08 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:08 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:19 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:21 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:21 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:23 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:24 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:24 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:26 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:27 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:27 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:27 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:28 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:28 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:28 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:28 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:28 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:29 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:29 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:30 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:30 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:30 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:30 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:31 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:31 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:31 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:32 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:32 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:32 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:33 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:33 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:33 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:34 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:36 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:36 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:41:37 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:47:26 PM Gaufre main
 INFOS: Nouvelle partie
-avr. 23, 2023 6:37:18 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:37:27 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 9,9
-avr. 23, 2023 6:37:27 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:37:27 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:37:31 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 8,8
-avr. 23, 2023 6:37:31 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:37:31 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:37:33 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:37:39 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 8,8
-avr. 23, 2023 6:39:22 PM java.util.logging.LogManager$RootLogger log
+avr. 24, 2023 12:47:31 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:48:37 PM Gaufre main
 INFOS: Nouvelle partie
-avr. 23, 2023 6:39:25 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:39:35 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 9,9
-avr. 23, 2023 6:39:35 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:39:35 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:39:39 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 8,8
-avr. 23, 2023 6:39:39 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:39:39 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:39:42 PM java.util.logging.LogManager$RootLogger log
-INFOS: nouvelle partie de taille 10 par 10
-avr. 23, 2023 6:39:48 PM java.util.logging.LogManager$RootLogger log
-INFOS: coup en 8,8
+avr. 24, 2023 12:49:09 PM Gaufre main
+INFOS: Nouvelle partie
+avr. 24, 2023 12:49:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:49:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:49:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:05 PM Gaufre main
+INFOS: Nouvelle partie
+avr. 24, 2023 12:50:13 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:13 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:13 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:13 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:14 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:15 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:16 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:17 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9
+avr. 24, 2023 12:50:18 PM Modele.Niveau <init>
+INFOS: nouvelle partie de taille 9 par 9

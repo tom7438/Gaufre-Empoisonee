@@ -32,7 +32,7 @@ public class ControleurMediateur implements CollecteurEvenements {
 
 	public void attends(){
 		try {
-			Thread.sleep(attendre*1000); // Attendre 5 secondes
+			Thread.sleep(attendre*1000); // Attendre 2 secondes
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -44,19 +44,26 @@ public class ControleurMediateur implements CollecteurEvenements {
 		
 		if (v.IJ.J.enCours && !v.IJ.J.partieTerminee){
 			//System.out.println("En cours : "+v.IJ.J.enCours+" partie terminee : "+v.IJ.J.partieTerminee);
-			
+			int i=0;
+            // on regarde l'interieur de la pile
+            v.IJ.J.return_pile.empiler(v.IJ.J.niveau);
+            if (v.IJ.J.return_pile.taille() != 0){
+                while (i!=v.IJ.J.return_pile.taille()-1){
+                
+                   v.IJ.J.return_pile.getNiveau(i).toString();
+                   i++; 
+                }
+            }
 			if (decompte == 0) {
 				int type = v.IJ.J.type_joueur(v.IJ.J.joueurCourant);
 				// Lorsque le temps est écoulé on le transmet au joueur courant.
 				// Si un coup a été joué (IA) on change de joueur.
 				switch(type){
 					case -1:
-
 						if (v.IJ.J.niveau.estTermine()){ //Pour vérifier qu'il ne reste pas que le morceau empoisoné pour l'humain, si c'est le cas, il a perdu
 							v.IJ.J.setEnCours(false) ; //Pourquoi pas : v.IJ.J.enCours =false directement ?
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant + 1) %2;
-							System.out.println("ICIIIIIII");
 						}else{
 							System.out.println("On vous attend, joueur " + v.IJ.J.joueurCourant);
 							decompte = lenteurAttente;
@@ -71,7 +78,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) % 2;
-							//v.IJ.J.changeJoueur();
 
 						} else {
 							if(!v.IJ.J.niveau.estTermine()) {
@@ -82,7 +88,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 								v.IJ.J.setEnCours(false) ;
 								v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
 							}
-							//v.IJ.J.changeJoueur();
 						}
 						break;
 					case 1:
@@ -94,7 +99,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 							v.IJ.J.setEnCours(false) ;
 							v.IJ.J.partieTerminee = true;
 							v.IJ.J.joueurGagnant = (v.IJ.J.joueurCourant +1) %2;
-							//v.IJ.J.changeJoueur();
 
 						}
 						 else {
@@ -106,7 +110,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 								v.IJ.J.setEnCours(false) ;
 								v.IJ.J.joueurGagnant = v.IJ.J.joueurCourant;
 							}
-							//v.IJ.J.changeJoueur();
 						}
 						break;
                     // case 2:

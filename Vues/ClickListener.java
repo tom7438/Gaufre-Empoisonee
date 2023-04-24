@@ -75,9 +75,20 @@ public class ClickListener implements ActionListener {
             } else if(e.getSource() == Graphique.sauvegarder) {
                 // TODO
             } else if(e.getSource() == Graphique.annuler) {
+                System.out.println("J'ai cliqué sur annulé");
+                //On dépile le niveau au sommet de la pile
+                
+                if (IJ.J.return_pile.estVide())
+                    System.out.println("La pile est vide");
+                else{
+                    IJ.J.reset_Niveau();
+                    //On rafraichit l'interface
+                    IJ.rafraichir();
+                }
                 // TODO
             } else if(e.getSource() == Graphique.refaire) {
-                // TODO
+                //    IJ.J.avance_Niveau();
+                   // IJ.rafraichir();
             }
         }
         if (e.getSource() == Graphique.quitter) {

@@ -10,6 +10,11 @@ public class Niveau {
     public int colonnes;
     public int[][] contenu;
 
+    final static int LIGNES_PAR_DEFAUT = 8;
+    final static int COLONNES_PAR_DEFAUT = 6;
+
+    private Logger logger;
+
     public Niveau(int lignes, int colonnes) {
         this.logger = MyLogger.getLogger();
         if (lignes < 1 || colonnes < 1) {

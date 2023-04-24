@@ -1,7 +1,5 @@
 package Modele;
 
-import Controlleur.*;
-import Vues.InterfaceJeu;
 
 public class Jeu {
 	public boolean enCours;
@@ -16,6 +14,10 @@ public class Jeu {
 	int decompte;
 	int [] score;
 	public int joueurGagnant;
+	public Pile return_pile;
+	public Pile avance_pile;
+	public boolean retour = false;
+	public boolean avance = false;
 
 	public void reset(int l, int c) {
 		enCours = true;
@@ -61,11 +63,19 @@ public class Jeu {
 		}
 		enCours = true;
 
+
 		if (!niveau.aMorceau(l, c)) {
 			return false;
 		}
+
 		niveau.effacerRectangle(l, c);
 
+		// On empile le niveau actuelle dans la pile retour
+		Niveau n2 = niveau.clone();
+		this.return_pile.empiler(n2);
+		// On vide la pile avance
+		this.avance_pile.vider(); 
+		
 		if (niveau.estTermine()) {
 			partieTerminee = true;
 			enCours = false;
@@ -84,26 +94,6 @@ public class Jeu {
 		decompte = lenteurAttente;
 	}
 
-	public void tictac() {
-		System.out.println("ICIII");
-		if (this.enCours()) {
-			if (decompte == 0) {
-				int type = typeJoueur[joueurCourant];
-				// Lorsque le temps est écoulé on le transmet au joueur courant.
-				// Si un coup a été joué (IA) on change de joueur.
-				if (joueurs[joueurCourant].tempsEcoule()) {
-					changeJoueur();
-				} else {
-					// Sinon on indique au joueur qui ne réagit pas au temps (humain) qu'on l'attend.
-					System.out.println("On vous attend, joueur " + joueurs[joueurCourant].getPlayerName());
-					decompte = lenteurAttente;
-				}
-			} else {
-				decompte--;
-			}
-		}
-	}
-
 	public int type_joueur(int num_j){
 		return joueurs[num_j].difficulteIA;
 	}
@@ -118,10 +108,6 @@ public class Jeu {
 	 */
 	public int getPlayer() {
 		return joueurCourant;
-	}
-
-	public void joue(){
-		tictac();
 	}
 
 	public void incrementerScore(int i){
@@ -147,5 +133,38 @@ public class Jeu {
 
 	public void setPartieTerminee() {
 		partieTerminee = false;
+	}
+
+	
+	public void reset_Niveau (){
+		//on depile le niveau actuelle
+		System.out.println("Tentative d'annulation de niveau");
+		Niveau n3 = this.return_pile.depiler();
+		//Si la pile est vide on remet le niveau initial
+		if (this.return_pile.estVide()){
+			this.niveau = new Niveau(n3.getLigne(), n3.getColonne());
+			this.joueurCourant = (this.joueurCourant + 1) % 2;
+		}
+		else{
+		//on charge le niveau precedent
+		this.niveau = this.return_pile.sommet();
+		//on empile le niveau depile dans la pile avance
+		this.avance_pile.empiler(n3);
+		this.joueurCourant = (this.joueurCourant + 1) % 2;
+		}
+	}
+	
+	public void avance_Niveau(){
+		//on depile le niveau actuelle
+		Niveau n3 = this.avance_pile.depiler();
+		//Si la pile est vide on ne fait rien
+		if (this.avance_pile.estVide()){
+			return;
+		}
+		//on charge le niveau precedent
+		this.niveau = this.avance_pile.sommet();
+		//on empile le niveau depile dans la pile avance
+		this.return_pile.empiler(n3);
+		this.joueurCourant = (this.joueurCourant + 1) % 2;
 	}
 }

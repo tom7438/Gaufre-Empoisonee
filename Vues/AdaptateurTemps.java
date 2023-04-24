@@ -43,10 +43,7 @@ public class AdaptateurTemps implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		control.tictac(v);
 		refresh(v);
-		
-
 		v.repaint();
-		//v.IJ.rafraichir();
 	}
 
 	public void refresh(VueGaufre v){

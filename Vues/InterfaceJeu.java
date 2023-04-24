@@ -147,7 +147,7 @@ public class InterfaceJeu extends InterfaceGraphique{
 
         this.frame.getContentPane().add(jPanel2, BorderLayout.NORTH);
 
-        chrono = new Timer( 30, new AdaptateurTemps(control, vueGaufre));
+        chrono = new Timer( 100, new AdaptateurTemps(control, vueGaufre));
 		chrono.start();
 
         this.frame.setVisible(true);

@@ -66,4 +66,12 @@ public class Pile {
         sommet = -1;
     }
 
+    //On renvooie le niveau i de la pile
+    public Niveau getNiveau(int i) {
+        if (!estVide()){
+            return pile[i];
+        }
+        return null;
+    }
+
 }
