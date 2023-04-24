@@ -43,12 +43,6 @@ public class AdaptateurTemps implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		control.tictac(v);
 		refresh(v);
-		// System.out.print(v.IJ.J.niveau.toString());
-		// try {
-		// 	Thread.sleep(2*1000); // Attendre 2 secondes
-		// } catch (InterruptedException eh) {
-		// 	eh.printStackTrace();
-		// }
 		v.repaint();
 	}
 
