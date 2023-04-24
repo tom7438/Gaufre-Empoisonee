@@ -19,7 +19,10 @@ public class Jeu {
 
 	public void reset(int l, int c) {
 		enCours = true;
+
 		this.niveau= new Niveau(l, c);
+		this.return_pile = new Pile(l*c);
+		this.avance_pile = new Pile(l*c);
 		joueurCourant = 0;
 	}
 

@@ -13,6 +13,12 @@ public class Humain extends Joueur {
 
     @Override
     public boolean jeu(){
+    Humain (int type, Niveau n){
+        super(type,n);
+    }
+
+    @Override
+    boolean jeu(int num){   
         int ok;
         do{
          Coup p = new Coup(niveau);

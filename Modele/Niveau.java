@@ -1,5 +1,7 @@
 package Modele;
 
+import java.util.logging.Logger;
+
 public class Niveau {
     public static final int VIDE = 0;
     public static final int MORCEAU = 1;
@@ -8,17 +10,17 @@ public class Niveau {
     public int colonnes;
     public int[][] contenu;
 
-    final static int LIGNES_PAR_DEFAUT = 8;
-    final static int COLONNES_PAR_DEFAUT = 6;
-
     public Niveau(int lignes, int colonnes) {
+        this.logger = MyLogger.getLogger();
         if (lignes < 1 || colonnes < 1) {
+            logger.severe("Le nombre de lignes et de colonnes doit être supérieur à 0");
             throw new IllegalArgumentException("Le nombre de lignes et de colonnes doit être supérieur à 0");
         }
         this.lignes = lignes;
         this.colonnes = colonnes;
 
         initContenu();
+        logger.info("nouvelle partie de taille " + lignes + " par " + colonnes);
     }
 
     public Niveau(Niveau n) {
@@ -106,6 +108,8 @@ public class Niveau {
         return true;
     }
 
+
+
     public boolean aMorceau(int ligne, int colonne) {
         if (ligne < 0 || ligne >= lignes || colonne < 0 || colonne >= colonnes) {
             throw new IllegalArgumentException("Les coordonnées sont invalides");
@@ -152,22 +156,35 @@ public class Niveau {
         return s;
     }
 
+    // On clone le niveau pour ne pas modifier le niveau actuel
+    public Niveau clone() {
+        Niveau n = new Niveau(this.lignes, this.colonnes);
+   
+        for(int i=0; i<n.lignes; i++) {
+            for(int j=0; j<n.colonnes; j++) {
+                n.contenu[i][j] = this.contenu[i][j];
+            }
+        }
+        return n;
+    }
+
     public int jouer(int caseChoisieL, int caseChoisieC) {
+        logger.info("coup en " + caseChoisieL + "," + caseChoisieC);
         if(this.aMorceau(caseChoisieL, caseChoisieC)) {
             this.effacerRectangle(caseChoisieL, caseChoisieC);
             return 0;
         } else if(this.aMorceauEmpoisonne(caseChoisieL, caseChoisieC)) {
-            if (!this.aMorceau(1,0) && !this.aMorceau(0, 1)){
-                System.out.println("Vous avez mangé le morceau empoisonné");
-            }
-            this.effacerRectangle(0,0);
+            System.out.println("Vous avez mangé le morceau empoisonné");
             // System.out.println("Vous avez perdu");
             // System.out.println("Fin du jeu");
             // System.out.println("Merci d'avoir joué connard");
+
             return 1;
         } else {
             //System.out.println("Il n'y a pas de morceau à cette case");
             return 2;
         }
     }
+
+
 }

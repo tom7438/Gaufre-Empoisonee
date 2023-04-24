@@ -30,7 +30,6 @@ public class ControleurMediateur implements CollecteurEvenements {
 
     }
 
-
 	public void attends(){
 		try {
 			Thread.sleep(attendre*1000); // Attendre 5 secondes
