@@ -7,8 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VueGaufre extends JComponent {
+    public Jeu G;
     Niveau N;
-    Jeu G;
     public InterfaceJeu IJ;
     public int largeurCase, hauteurCase;
 

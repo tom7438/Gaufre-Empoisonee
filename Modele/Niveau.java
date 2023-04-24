@@ -54,7 +54,7 @@ public class Niveau {
     public void ajouterLigne() {
         // Ajouter une ligne au niveau
         int[][] newContenu = new int[lignes + 1][colonnes];
-        for (int i = 0; i < lignes; i++) {
+        for (int i = 0; i < lignes + 1; i++) {
             for (int j = 0; j < colonnes; j++) {
                 // Nouvelle ligne
                 if (i == lignes)
@@ -70,7 +70,7 @@ public class Niveau {
         // Ajouter une colonne au niveau
         int[][] newContenu = new int[lignes][colonnes + 1];
         for (int i = 0; i < lignes; i++) {
-            for (int j = 0; j < colonnes; j++) {
+            for (int j = 0; j < colonnes + 1; j++) {
                 // Nouvelle colonne
                 if (j == colonnes)
                     newContenu[i][colonnes] = MORCEAU;
@@ -160,6 +160,7 @@ public class Niveau {
             if (!this.aMorceau(1,0) && !this.aMorceau(0, 1)){
                 System.out.println("Vous avez mangé le morceau empoisonné");
             }
+            this.effacerRectangle(0,0);
             // System.out.println("Vous avez perdu");
             // System.out.println("Fin du jeu");
             // System.out.println("Merci d'avoir joué connard");

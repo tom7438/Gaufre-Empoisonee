@@ -171,6 +171,24 @@ public class InterfaceJeu extends InterfaceGraphique{
         gaufrePanel.add(vueGaufre);
         jPanel3.add(gaufrePanel, BorderLayout.CENTER);
 
+        ClickListener click = new ClickListener(this, 1);
+
+        // Ajout des listeners
+        charger.addActionListener(click);
+        annuler.addActionListener(click);
+        refaire.addActionListener(click);
+        sauvegarder.addActionListener(click);
+        nouvellePartie.addActionListener(click);
+        menuPrincipal.addActionListener(click);
+
+        quitter.addMouseListener(new MouseInputAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                chrono.stop();
+                fermer();
+            }
+        });
+
         // Vider le panel de controle pour remettre le score à jour
         controlsPanel.removeAll();
 

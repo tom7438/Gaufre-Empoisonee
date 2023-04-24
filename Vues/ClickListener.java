@@ -7,6 +7,7 @@ import java.awt.event.*;
 import javax.swing.JOptionPane;
 
 import Controlleur.ControleurMediateur;
+import Modele.Jeu;
 import Modele.Joueur;
 
 public class ClickListener implements ActionListener {
@@ -51,8 +52,8 @@ public class ClickListener implements ActionListener {
                 // TODO
             } else if (e.getSource() == Graphique.menuPrincipal) {
                 IJ.fermer();
-                IJ.J.initialiserScore();
-                InterfaceMenu.demarrer(IJ.J);
+                Jeu j = new Jeu();
+                InterfaceMenu.demarrer(j);
             } else if(e.getSource() == Graphique.nouvellePartie) {
                 // Incrémenter le score
                 if(IJ.J.partieTerminee())
